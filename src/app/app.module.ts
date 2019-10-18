@@ -30,19 +30,20 @@ import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
 import { AdimOptionsMenuComponent } from './admin/adim-options-menu/adim-options-menu.component';
 import { HSafetyComponent } from './component/h-safety/h-safety.component';
 import { AdminSignInComponent } from './admin/admin-sign-in/admin-sign-in.component';
+import { SearchComponent } from './component/search/search.component';
 
 
 
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyB64l4o9pqgvmv9RFFOJffhF2-nU-_6Wkg',
-  authDomain: 'micampusexchange.firebaseapp.com',
-  databaseURL: 'https://micampusexchange.firebaseio.com',
-  projectId: 'micampusexchange',
-  storageBucket: 'micampusexchange.appspot.com',
-  messagingSenderId: '1082426288798',
-  appId: '1:1082426288798:web:47b1a10fe7bf8d2a99a98f',
-  measurementId: 'G-BKW3MSK6PL'
+  apiKey: 'AIzaSyABYTAH95oVFpVllC0hpX1OirxV85gclaQ',
+  authDomain: 'miexchangeapp.firebaseapp.com',
+  databaseURL: 'https://miexchangeapp.firebaseio.com',
+  projectId: 'miexchangeapp',
+  storageBucket: 'miexchangeapp.appspot.com',
+  messagingSenderId: '229928549256',
+  appId: '1:229928549256:web:642c6b66f10307f3b4583d',
+  measurementId: 'G-N6K9CNC9YK'
 };
 
 @NgModule({
@@ -67,7 +68,8 @@ const firebaseConfig = {
     AdminMenuComponent,
     AdimOptionsMenuComponent,
     HSafetyComponent,
-    AdminSignInComponent
+    AdminSignInComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

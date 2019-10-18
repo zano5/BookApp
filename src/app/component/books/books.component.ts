@@ -1,6 +1,7 @@
 import { AddBookService } from './../../service/add-book.service';
 import { Component, OnInit } from '@angular/core';
 import { async } from 'q';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books',
@@ -13,6 +14,8 @@ export class BooksComponent implements OnInit {
 
   bookArryList = [];
 
+
+
   image;
 
   bookSearch;
@@ -20,7 +23,9 @@ export class BooksComponent implements OnInit {
 
   bookItem;
 
-  constructor(private addService: AddBookService) {
+  bookName = '';
+
+  constructor(private addService: AddBookService, private router: Router) {
 
     this.addService.getBooks().subscribe(data => {
 
@@ -89,6 +94,21 @@ export class BooksComponent implements OnInit {
 
     this.bookItem = book;
 
+  }
+
+
+  search() {
+
+
+
+    if (this.bookName !== '') {
+
+      this.router.navigate(['/search'], { queryParams: { search: this.bookName } });
+
+    } else {
+
+      alert('Please Enter Book Name In Input');
+    }
   }
 
 

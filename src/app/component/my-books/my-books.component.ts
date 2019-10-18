@@ -32,6 +32,7 @@ export class MyBooksComponent implements OnInit {
     status: '',
     studentNo:  0,
     url: '',
+    course: ''
 
 
   };
@@ -96,6 +97,7 @@ export class MyBooksComponent implements OnInit {
 
   addBook() {
 
+    this.book.studentNo = this.student[0].studentNo;
     this.book.status = 'pending';
     this.uploadProgress =  this.addBookService.uploadBookImage(this.event, this.book);
 

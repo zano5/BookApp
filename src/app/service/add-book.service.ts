@@ -31,6 +31,8 @@ downloadURL;
 
     const bookFire = this.afd.collection('books');
 
+    console.log('serviceBook', book);
+
 
     bookFire.add(book).then(() => {
 
@@ -135,6 +137,17 @@ getBooks() {
 getMyBooks(student) {
   const bookFire = this.afd.collection('books',   ref => ref.where('studentNo', '==', parseInt(student.studentNo, 10)));
   return bookFire.snapshotChanges();
+}
+
+
+getBooksSearch(name) {
+
+
+  console.log('service', name);
+
+  const bookFire = this.afd.collection('books',   ref => ref.where('name', '==', name ));
+  return bookFire.snapshotChanges();
+
 }
 
 }

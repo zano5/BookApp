@@ -18,6 +18,7 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './component/register/register.component';
 import { HSafetyComponent } from './component/h-safety/h-safety.component';
+import { SearchComponent } from './component/search/search.component';
 
 const routes: Routes = [
 {path: '', component: MenuComponent, children: [
@@ -51,6 +52,7 @@ const routes: Routes = [
 {path: 'course', component: AddCourseComponent},
 {path: 'specialization', component: AddSpecializationComponent},
 {path: 'adminOptions', component: AdimOptionsMenuComponent},
+{path: 'search', component: SearchComponent},
 
 
 
