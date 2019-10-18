@@ -1,0 +1,71 @@
+<body class="bg-img">
+
+  <div class="centered">
+
+<div class="sign-card">
+
+<div class="sign-form">
+
+<h1 style="text-align: center; ">Login</h1>
+
+          <div class="form-group">
+
+
+
+            <label for="exampleInputEmail1">Student Number</label>
+            <input type="number" class="form-control" id="studentNo" aria-describedby="studentNo" placeholder="Student Number" [(ngModel)]="user.studentNo">
+
+          </div>
+
+          <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="user.password">
+            </div>
+
+
+          <button type="submit" class="btn btn-primary" (click)="moveDetail()">Submit</button>
+
+
+
+          <p style="text-align:center; margin-top:10px; color: blue" (click)="adminLogin()">Admin</p>
+
+
+
+
+
+
+
+
+
+  </div>
+
+</div>
+
+</div>
+
+  <!-- <div id="login">
+    <div id="card">
+      <h1 class="mat-display-1" style="margin-bottom: 10px;">Login</h1>
+      <p class="mat-body-1 subtitle">Welcome to MiCampusExchange</p>
+
+        <div>
+          <span class="mat-body-1 headings">Student Number</span>
+          <input type="number"   [(ngModel)]="user.studentNo"/>
+        </div>
+
+        <div>
+          <span class="mat-body-1 headings">Password</span>
+          <input type="password" [(ngModel)]="user.password"/>
+        </div>
+
+        <button ion-button block (click)="moveDetail()">Login</button>
+        <p class="failed mat-body-1">{{error}}</p>
+
+
+    </div>
+  </div> -->
+
+
+
+
+</body>

@@ -1,0 +1,129 @@
+<app-adim-options-menu></app-adim-options-menu>
+
+
+<nav class="navbar navbar-light bg-light" style="margin-top:10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+border-radius: 5px;">
+    <a class="navbar-brand"></a>
+    <form class="form-inline">
+
+        <button type="button"  data-toggle="modal" data-target="#addSpecializationModal" style=" background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        outline:none;">
+          + Add Specialization
+          </button>
+    </form>
+  </nav>
+
+
+
+    <!--Modal Add-->
+
+<div class="modal fade" id="addSpecializationModal" tabindex="-1" role="dialog" aria-labelledby="addSpecializationModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Specialization</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="form-group">
+          <label for="exampleInputEmail1" id="item_style">Specialization ID</label>
+          <input type="string" class="form-control"  placeholder="ID"  [(ngModel)]="specialization.specialID">
+        </div>
+
+        <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">Specialization</label>
+          <input type="text" class="form-control"  placeholder="Name" [(ngModel)]="specialization.name">
+        </div>
+
+
+
+        <label for="inputState" id="item_style">Course</label>
+        <select id="inputState" class="form-control" [(ngModel)]="specialization.courseName">
+          <option selected value="{{course.name}}" *ngFor="let course of courseList">{{course.name}}</option>
+
+        </select>
+
+
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style="width:100%" (click)="addSpecialization()">Add</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Course</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr  data-toggle="modal" data-target="#updateModal" *ngFor="let specialization of specializationList" (click)="update(specialization)">
+
+      <td>{{specialization.specialID}}</td>
+      <td>{{specialization.name}}</td>
+      <td>{{specialization.courseName}}</td>
+
+    </tr>
+
+
+  </tbody>
+</table>
+
+
+
+<!--Modal update-->
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Specialization</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="form-group" id="item_style">
+          <label for="exampleInputEmail1">ID</label>
+          <input type="text" class="form-control"  placeholder="Id" [(ngModel)]="specialization.specialID">
+        </div>
+
+        <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">Name</label>
+          <input type="text" class="form-control"  placeholder="Name" [(ngModel)]="specialization.name">
+        </div>
+
+
+        <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">Course</label>
+          <input type="text" class="form-control"  placeholder="Name" [(ngModel)]="specialization.courseName">
+        </div>
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="updateCourse()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

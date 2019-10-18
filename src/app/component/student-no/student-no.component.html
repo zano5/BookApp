@@ -1,0 +1,24 @@
+
+<form [formGroup]="UserForm" (ngSubmit)="formSubmit(UserForm)">
+
+    <div class="form-row">
+    <div class="form-group col-md-12">
+        <label for="inputName">Name</label>
+        <input type="text" class="form-control"  placeholder="name"  formControlName="name">
+      </div>
+
+      <div class="form-group col-md-12">
+          <label for="inputSurname">Surname</label>
+          <input type="text" class="form-control"  placeholder="Surname"  formControlName="surname">
+        </div>
+
+
+    <div class="form-group col-md-12">
+      <label for="inputStudentNo">Student Number</label>
+      <input type="number" class="form-control"  placeholder="Student Number"   formControlName="studentNo">
+    </div>
+  </div>
+
+
+  <button type="submit" class="btn btn-primary" [disabled]="UserForm.invalid" >Sign Up</button>
+</form>

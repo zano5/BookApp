@@ -1,0 +1,20 @@
+<div id="login">
+  <div id="card">
+    <h1 class="mat-display-1" style="margin-bottom: 10px;">Login</h1>
+    <p class="mat-body-1 subtitle">Welcome to the Admin Panel</p>
+
+      <div>
+        <span class="mat-body-1 headings">Email</span>
+        <input type="email"   [(ngModel)]="loginUser.email"/>
+      </div>
+
+      <div>
+        <span class="mat-body-1 headings">Password</span>
+        <input type="password"  [(ngModel)]="loginUser.password"/>
+      </div>
+
+      <button ion-button block (click)="login()">Login</button>
+      <p class="failed mat-body-1">{{error}}</p>
+
+  </div>
+</div>
