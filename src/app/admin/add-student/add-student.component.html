@@ -1,2 +1,154 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand"></a>
+  <form class="form-inline">
+
+      <button type="button"  data-toggle="modal" data-target="#addSpecializationModal" style=" background-color: Transparent;
+      background-repeat:no-repeat;
+      border: none;
+      cursor:pointer;
+      overflow: hidden;
+      outline:none;" (click)="back()">
+          X
+        </button>
+  </form>
+</nav>
 
 
+
+
+<div class="form-group" id="item_style">
+  <label for="exampleInputEmail1" id="item_style">Student Number</label>
+  <input type="number" class="form-control"  placeholder="Student Number"  [(ngModel)]="student.studentNo" (input)="onSearchChange($event.target.value)">
+</div>
+
+<div class="form-group" id="item_style">
+  <label for="exampleInputPassword1">Password</label>
+  <input type="text" class="form-control"  placeholder="Password" [(ngModel)]="student.password">
+</div>
+
+
+
+<label for="inputState" id="item_style">Specialization</label>
+<select id="inputState" class="form-control" [(ngModel)]="specialization">
+  <option selected value="{{special.name}}" *ngFor="let special of specialObjectList">{{special.name}}</option>
+
+
+</select>
+
+<div *ngFor=" let special of specialObjectList">
+
+  <div *ngIf= 'specialization === special.name'>
+
+
+      <label for="inputState" id="item_style">Course</label>
+<select id="inputState" class="form-control" [(ngModel)]="student.course">
+  <option selected value="{{special.courseName}}" >{{special.courseName}}</option>
+
+
+</select>
+
+
+
+  </div>
+
+</div>
+
+
+
+<div class="form-group" id="item_style">
+  <label for="exampleInputPassword1">ISBN</label>
+  <input type="text" class="form-control"  placeholder="Recommended Book" [(ngModel)]="recommondedBook.isbn">
+</div>
+
+
+<div class="form-group" id="item_style">
+    <label for="exampleInputPassword1">Add Recommended Book</label>
+    <input type="text" class="form-control"  placeholder="Recommended Book" [(ngModel)]="recommondedBook.name">
+  </div>
+
+
+  <div *ngFor="let book of  recommendedBookList">
+
+    <div  id="item_style">
+
+      <div class="row">
+        <div class="col-sm-8">
+    {{book.name}}
+
+
+
+       </div>
+
+  <div class="col-sm-2" >
+
+    <i class="fa fa-trash" aria-hidden="true" data-toggle="modal"  (click)="deleteRecommendedBook(book)" ></i>
+
+  </div>
+
+ <div class="col-sm-2">
+      <i class="fas fa-edit" aria-hidden="true"   data-target="#updateRecommendedModal" (click)="editBook(book)"></i>
+
+
+
+    </div>
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  <button  type="button" (click)="addRecommended()" class="btn btn-secondary" style="width:100%">Add Recommended Book</button>
+
+
+
+
+
+
+  <button type="button" class="btn btn-primary" style="width:100%; margin-top:10px;" (click)="addStudent()" >Add</button>
+
+
+
+
+  <!--Modal update-->
+
+<div class="modal fade" id="updateRecommendedModal" tabindex="-1" role="dialog" aria-labelledby="updateRecommendedModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Student</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+
+
+      <div class="form-group" id="item_style">
+        <label for="exampleInputPassword1">ISBN</label>
+        <input type="text" class="form-control"  placeholder="Recommended Book" [(ngModel)]="upRecBook.isbn">
+      </div>
+
+
+      <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">Add Recommended Book</label>
+          <input type="text" class="form-control"  placeholder="Recommended Book" [(ngModel)]="upRecBook.name">
+        </div>
+
+
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style="width:100%" (click)="updateRecomBook()" >Update</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 import { AdminSignInComponent } from './admin/admin-sign-in/admin-sign-in.component';
 import { AdimOptionsMenuComponent } from './admin/adim-options-menu/adim-options-menu.component';
 import { AdminMenuComponent } from './admin/admin-menu/admin-menu.component';
@@ -19,6 +20,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './component/register/register.component';
 import { HSafetyComponent } from './component/h-safety/h-safety.component';
 import { SearchComponent } from './component/search/search.component';
+import { NLSearchComponent } from './component/n-lsearch/n-lsearch.component';
 
 const routes: Routes = [
 {path: '', component: MenuComponent, children: [
@@ -45,14 +47,16 @@ const routes: Routes = [
 {path: 'adminSign', component: AdminSignInComponent},
 
 {path: 'adminMenu', component: AdminMenuComponent, children: [
-  {path: '', component: AdminDashboardComponent},
-  {path: 'addStudent', component: AddStudentComponent}
+  {path: '', component: AdminDashboardComponent}
 
 ]},
 {path: 'course', component: AddCourseComponent},
 {path: 'specialization', component: AddSpecializationComponent},
 {path: 'adminOptions', component: AdimOptionsMenuComponent},
 {path: 'search', component: SearchComponent},
+{path: 'contact', component: AdminContactComponent},
+{path: 'addStudent', component: AddStudentComponent},
+{path: 'nSearch', component: NLSearchComponent}
 
 
 

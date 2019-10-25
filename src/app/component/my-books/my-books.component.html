@@ -88,7 +88,7 @@ border-radius: 5px;">
           </div>
 
 
- <label lass="image-upload-container btn btn-bwm" for="file">
+ <label class="image-upload-container btn btn-bwm" for="file">
     <span>Select Image</span>
 <input type="file" (change)="upload($event)" accept=".png,.jpg" />
 
@@ -196,7 +196,7 @@ border-radius: 5px;">
     </tr>
   </thead>
   <tbody>
-    <tr  data-toggle="modal" data-target="#updateModal" *ngFor="let book of bookList" (click)="update(book)">
+    <tr  data-toggle="modal" data-target="#updateModal" *ngFor="let book of bookList" (click)="update(book)" class="img-fluid animated fadeIn">
 
       <td>{{book.name}}</td>
       <td>{{book.isbn}}</td>

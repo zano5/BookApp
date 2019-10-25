@@ -3,6 +3,7 @@ import { AdminSpecializationService } from './../../service/admin-specialization
 import { AdminStudentService } from './../../service/admin-student.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RecommendedBooksService } from 'src/app/service/recommended-books.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -20,12 +21,37 @@ export class AdminDashboardComponent implements OnInit {
 
   };
 
+
+
+  updateValue;
   totStudent;
   totCourse;
   totSpecialization;
 
+  recommondedBook = {
+
+    isbn: 0,
+    name: '',
+    studentNo: ''
+
+  };
+
+
+
+  upRecBook = {
+    key: '',
+    isbn: 0,
+    name: '',
+    studentNo: ''
+
+  };
+
+  adList = [];
+
 
   specialization;
+
+  recommendedBookList = [];
 
 
 specialName;
@@ -38,7 +64,7 @@ specializationList = [];
   studentList = [];
 
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private studentService: AdminStudentService, private  specializationSevice: AdminSpecializationService, private courseService: AdminCourseService) { }
+  constructor(private router: Router, private studentService: AdminStudentService, private  specializationSevice: AdminSpecializationService, private courseService: AdminCourseService, private recommendBookService: RecommendedBooksService ) { }
 
   ngOnInit() {
 
@@ -120,11 +146,8 @@ addSpecialization() {
 addStudent() {
 
 
+  this.router.navigateByUrl('addStudent');
 
-  this.student.specialization = this.specialization;
-
-
-  this.studentService.addStudent(this.student);
 
 }
 
@@ -135,11 +158,119 @@ update(student) {
 
 updateStudent() {
 
-  console.log('zano');
+
 
   this.studentService.updateStudent(this.student);
 
 }
+
+
+
+
+
+
+
+
+delete(i) {
+  this.adList.splice(i, 1);
+}
+
+
+// tslint:disable-next-line:adjacent-overload-signatures
+updateBook(i) {
+
+  this.updateValue = i;
+
+}
+
+
+onSearchChange(searchValue: string): void {
+
+
+  this.recommendBookService.getRecommendedBooks(searchValue).subscribe(data => {
+
+
+    this.recommendedBookList = data.map(e => {
+
+
+      return{
+
+        key: e.payload.doc.id,
+        ...e.payload.doc.data()
+
+      } as RecomendedBook;
+
+    });
+
+
+    console.log('recommended', this.recommendedBookList);
+
+
+
+});
+}
+
+
+
+deleteRecommendedBook(book) {
+
+  this.recommendBookService.deleteRecommendedBook(book);
+
+}
+
+editBook(book) {
+
+  this.upRecBook =  book;
+
+}
+
+
+updateRecomBook() {
+
+  this.recommendBookService.updateRecommendedBook(this.upRecBook);
+
+
+}
+
+// tslint:disable-next-line:adjacent-overload-signatures
+addRecommended() {
+
+  if (this.recommondedBook.name === '') {
+
+
+    alert('Please Add Recommended Book Name');
+
+  } else if (this.recommondedBook.isbn === 0) {
+
+    alert('Please Add Recommended Book ISBN');
+
+  } else {
+
+    console.log(this.recommondedBook);
+
+    if (this.student.studentNo !== '') {
+
+
+    this.recommondedBook.studentNo = this.student.studentNo;
+
+    this.recommendBookService.addRecommendedBook(this.recommondedBook);
+
+    this.recommondedBook.name = '';
+    this.recommondedBook.isbn = 0;
+
+    } else {
+
+        alert('Student Number Required');
+
+    }
+
+  }
+
+
+}
+
+
+
 
 
 

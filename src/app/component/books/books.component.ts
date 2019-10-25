@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class BooksComponent implements OnInit {
 
-  bookList;
+  bookList = [];
 
   bookArryList = [];
 
@@ -77,10 +77,6 @@ export class BooksComponent implements OnInit {
 
 
   getImage(image) {
-
-
-
-
 
 
      return this.addService.retreiveImage(image);

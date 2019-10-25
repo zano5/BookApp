@@ -1,14 +1,14 @@
-import { UserService } from 'src/app/service/user.service';
-import { AddBookService } from './../../service/add-book.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AddBookService } from 'src/app/service/add-book.service';
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  selector: 'app-n-lsearch',
+  templateUrl: './n-lsearch.component.html',
+  styleUrls: ['./n-lsearch.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class NLSearchComponent implements OnInit {
 
   image;
   data;
@@ -95,20 +95,19 @@ export class SearchComponent implements OnInit {
 
   close() {
 
-    if (this.stud !== '') {
+    if (this.stud) {
 
 
       this.router.navigateByUrl('detail-menu/books');
-      this.bookArryList = [];
-      this.bookList = [];
     } else {
 
-      this.bookArryList = [];
-      this.bookList = [];
 
-      this.router.navigateByUrl('/signIn');
+       this.bookArryList = [];
+       this.bookList = [];
 
-      alert('Login In To View!');
+       this.router.navigateByUrl('/signIn');
+
+       alert('Login In To View!');
     }
 
 
@@ -133,6 +132,5 @@ export class SearchComponent implements OnInit {
   this.bookItem = book;
 
 }
-
 
 }

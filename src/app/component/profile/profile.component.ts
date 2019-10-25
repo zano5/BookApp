@@ -1,3 +1,4 @@
+import { RecommendedBooksService } from 'src/app/service/recommended-books.service';
 import { UserService } from './../../service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -27,13 +28,36 @@ export class ProfileComponent implements OnInit {
   event;
   uploadProgress;
 
+  recommendedBookList = [];
 
 
-  constructor( private fb: FormBuilder, private userDao: UserService, private router: Router) {
+
+  // tslint:disable-next-line:max-line-length
+  constructor( private fb: FormBuilder, private userDao: UserService, private router: Router, private rBookService: RecommendedBooksService) {
 
    this.profileUser = this.userDao.getStudent();
 
    if (this.userDao.getStudent()) {
+
+    this.rBookService.getRecommendedBooks(this.profileUser[0].studentNo).subscribe(data => {
+
+
+      this.recommendedBookList = data.map(e => {
+
+
+        return{
+
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+
+        } as RecomendedBook;
+
+
+      });
+
+
+
+    });
 
 
 

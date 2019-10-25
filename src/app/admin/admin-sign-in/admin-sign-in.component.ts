@@ -1,14 +1,13 @@
-import { LoginDAOService } from './../../service/login-dao.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { LoginDAOService } from 'src/app/service/login-dao.service';
+
 
 @Component({
-  selector: 'app-admin-sign-in',
+  selector: 'app-add-specialization',
   templateUrl: './admin-sign-in.component.html',
   styleUrls: ['./admin-sign-in.component.scss']
 })
 export class AdminSignInComponent implements OnInit {
-
 
   loginUser = {
 
@@ -18,7 +17,7 @@ export class AdminSignInComponent implements OnInit {
 
   error = '';
 
-  constructor(private router: Router, private loginDao: LoginDAOService) { }
+  constructor( private loginDao: LoginDAOService) { }
 
   ngOnInit() {
   }
@@ -29,5 +28,4 @@ export class AdminSignInComponent implements OnInit {
     this.loginDao.signEmailPassword(this.loginUser);
 
   }
-
 }

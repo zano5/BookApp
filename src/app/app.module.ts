@@ -31,6 +31,8 @@ import { AdimOptionsMenuComponent } from './admin/adim-options-menu/adim-options
 import { HSafetyComponent } from './component/h-safety/h-safety.component';
 import { AdminSignInComponent } from './admin/admin-sign-in/admin-sign-in.component';
 import { SearchComponent } from './component/search/search.component';
+import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
+import { NLSearchComponent } from './component/n-lsearch/n-lsearch.component';
 
 
 
@@ -69,7 +71,9 @@ const firebaseConfig = {
     AdimOptionsMenuComponent,
     HSafetyComponent,
     AdminSignInComponent,
-    SearchComponent
+    SearchComponent,
+    AdminContactComponent,
+    NLSearchComponent
   ],
   imports: [
     BrowserModule,

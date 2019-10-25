@@ -20,5 +20,11 @@ export class AdminMenuComponent implements OnInit {
 
   }
 
+  comments() {
+
+    this.router.navigateByUrl('contact');
+
+  }
+
 
 }

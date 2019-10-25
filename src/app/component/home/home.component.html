@@ -8,10 +8,12 @@
     <div class="d-flex h-100 text-center align-items-center">
       <div class="w-100 text-white">
 
+        <h1 style="text-align:center;">MiCampusExchange</h1>
 
         <div class="form-group row">
           <div class="form-group col-md-8">
             <div class="input-group-prepend">
+
 
 
             <input type="text" class="form-control" placeholder="Search Book" aria-label="book" aria-describedby="basic-addon1" [(ngModel)]="bookName">
@@ -38,6 +40,10 @@
   </div>
 </header>
 
+
+<div class="card">
+
+    <div class="containerCard">
 
 <!--Carousel Wrapper-->
 <div id="carousel-with-lb" class="carousel slide carousel-multi-item" data-ride="carousel" style="margin-top:20px;">
@@ -105,7 +111,13 @@
   </div>
   <!--/.Carousel Wrapper-->
 
+  </div>
 
+</div>
+
+  <div class="card">
+
+      <div class="containerCard">
 
 <div class="container">
 
@@ -117,27 +129,26 @@
 
             <div class="form-group">
                 <label for="inputEmail">Email</label>
-              <input type="email" id="inputEmail" class="form-control" placeholder="Email"  autofocus  required>
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email"  autofocus  required [(ngModel)]="content.email">
 
             </div>
 
-            <form>
+          
 
             <div class="form-group">
                 <label for="inputPassword">Full Name</label>
-              <input type="text" id="inputPassword" class="form-control" placeholder="Full Name"  required>
+              <input type="text" id="inputPassword" class="form-control" placeholder="Full Name"  required [(ngModel)]="content.name">
 
             </div>
 
             <div class="form-group">
                 <label for="comment">Message</label>
-                <textarea class="form-control" rows="5" id="comment"></textarea>
+                <textarea class="form-control" rows="5" id="comment"  [(ngModel)]="content.message"></textarea>
               </div>
 
 
-            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit"  style="width:100%">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit"  style="width:100%" (click)="addComment()">Send</button>
 
-          </form>
 
 
 
@@ -146,6 +157,10 @@
         </div>
 
     </div>
+
+</div>
+
+</div>
 
 </div>
 

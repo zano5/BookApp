@@ -1,59 +1,6 @@
 <body style="text-align: center">
 
 
-    <!-- <div>
-
-      <div>
-
-
-        <img src="assets/profile.png" alt="Avatar">
-
-      </div>
-
-        <br>
-
-
-
-        <img src="assets/camera.png" style="height: 30px; height: 30px" data-toggle="modal" data-target="#addModal" >
-
-
-        </div> -->
-
-
-
-
-
-    <!-- Add Modal
-    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel"> Upload Profile</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-
-
-            <label lass="image-upload-container btn btn-bwm" for="file">
-                <span>Select Image</span>
-            <input type="file" (change)="upload($event)" accept=".png,.jpg" />
-            </label>
-
-
-
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" (click)="uploadImage()">Upload</button>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-
-
-
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="inputEmail4">Name</label>
@@ -89,6 +36,37 @@
           </div>
 
           </div>
+
+
+          <div id="rbook">
+
+
+            Recommended Books
+
+
+          </div>
+
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">ISBN</th>
+                <th scope="col">Name</th>
+
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor="let book of recommendedBookList" >
+
+                <td>{{book.isbn}}</td>
+                <td>{{book.name}}</td>
+
+              </tr>
+
+
+            </tbody>
+          </table>
+
 
 
           <button type="submit" class="btn btn-primary"  style="width:100%"  (click)="updateStudent()">Update</button>

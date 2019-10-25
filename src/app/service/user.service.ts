@@ -13,6 +13,7 @@ export class UserService {
   uploadProgress;
 
   student;
+  adminStudent;
 
   constructor(private afd: AngularFirestore, private afs: AngularFireStorage) {
 
@@ -22,6 +23,18 @@ export class UserService {
   saveUser(student) {
 
     this.student = student;
+
+  }
+
+  saveAdminStudent(adminStudent) {
+
+    this.adminStudent = adminStudent;
+
+  }
+
+  getAdminStudent() {
+
+     return this.adminStudent;
 
   }
 
