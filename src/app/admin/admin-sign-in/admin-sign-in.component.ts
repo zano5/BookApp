@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginDAOService } from 'src/app/service/login-dao.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class AdminSignInComponent implements OnInit {
 
   error = '';
 
-  constructor( private loginDao: LoginDAOService) { }
+  constructor( private loginDao: LoginDAOService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -28,4 +29,11 @@ export class AdminSignInComponent implements OnInit {
     this.loginDao.signEmailPassword(this.loginUser);
 
   }
+
+
+resetPassword() {
+
+this.router.navigateByUrl('resetEmail');
+
+}
 }

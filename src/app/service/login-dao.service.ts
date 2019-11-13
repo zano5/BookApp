@@ -63,4 +63,20 @@ export class LoginDAOService {
 
 }
 
+
+resetPassword(email: string) {
+  this.fireAuth.auth.sendPasswordResetEmail(email).then(() => {
+
+    alert('Successful! Please Check Email Address');
+
+    this.router.navigateByUrl('adminSign');
+
+  }).catch(err => {
+
+
+    alert('Unsuccessfully Email Reset');
+
+  });
+}
+
 }

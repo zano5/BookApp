@@ -60,14 +60,25 @@ course;
 
   }
 
+
+  clear() {
+
+    this.specialization.name = '';
+    this.specialization.courseName = '';
+    this.specialization.specialID =  '';
+  }
+
   addSpecialization() {
 
-   this.specializationService.addSpecialization(this.specialization);
+    this.specializationService.addSpecialization(this.specialization);
+    this.clear();
 
   }
 
 
   updateSpecialization() {
+
+    this.specializationService.updateSpecialization(this.specialization);
 
   }
 
@@ -79,8 +90,12 @@ course;
   }
 
 
-  updateCourse() {
+  deleteSpecialization() {
+
+    this.specializationService.deleteSpecialization(this.specialization);
 
   }
+
+
 
 }

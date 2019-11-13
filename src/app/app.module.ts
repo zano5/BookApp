@@ -33,6 +33,9 @@ import { AdminSignInComponent } from './admin/admin-sign-in/admin-sign-in.compon
 import { SearchComponent } from './component/search/search.component';
 import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 import { NLSearchComponent } from './component/n-lsearch/n-lsearch.component';
+import { ResetWEmailComponent } from './component/reset-wemail/reset-wemail.component';
+import { AdminSubjectComponent } from './component/admin-subject/admin-subject.component';
+import { AddSubjectComponent } from './admin/add-subject/add-subject.component';
 
 
 
@@ -73,7 +76,10 @@ const firebaseConfig = {
     AdminSignInComponent,
     SearchComponent,
     AdminContactComponent,
-    NLSearchComponent
+    NLSearchComponent,
+    ResetWEmailComponent,
+    AdminSubjectComponent,
+    AddSubjectComponent
   ],
   imports: [
     BrowserModule,

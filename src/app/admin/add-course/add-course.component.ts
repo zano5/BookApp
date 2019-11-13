@@ -70,6 +70,19 @@ export class AddCourseComponent implements OnInit {
 
   }
 
+  deleteModal(course) {
+
+    this.course = course;
+
+  }
+
+
+  deleteCourse() {
+
+    this.courseService.deleteCourse(this.course);
+
+  }
+
 
 
 

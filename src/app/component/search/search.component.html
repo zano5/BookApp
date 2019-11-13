@@ -1,7 +1,13 @@
 
 
 <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand"></a>
+   
+   
+    
+
+
+        <h4>Results Found</h4> 
+ 
     <form class="form-inline">
 
         <button type="button"  data-toggle="modal" data-target="#addSpecializationModal" style=" background-color: Transparent;
@@ -69,7 +75,18 @@
           <p id="text_modal"> Publish Date: {{bookItem?.pubdate}}</p>
           <p id="text_modal"> Price: R {{bookItem?.price}}</p>
 
-
+          <p id="text_modal"> Student Number{{profile.studentNo}}</p>
+          <p id="text_modal"> Contact Number {{profile.contact}}</p>
+    
+    
+    
+          <div class="modal-footer">
+              <div *ngIf="bookItem?.reserved =='no'">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="reserve(bookItem)">Reserve</button>
+           </div>
+           <div *ngIf="bookItem?.reserved =='yes'">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelReserve(bookItem)">Cancel Reserve</button>
+           </div>
 
 
           <div class="modal-footer">

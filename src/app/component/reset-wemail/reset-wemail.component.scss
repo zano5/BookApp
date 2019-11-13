@@ -1,5 +1,6 @@
 #login {
-  background:	#0000FF;
+
+  background-color: lightgray;
   position: absolute;
   left: 0;
   right: 0;
@@ -39,11 +40,11 @@
   color: gray;
 }
 
-
-button{
+#card button {
+  background:	#0000FF;
+  color: white;
   width: 100%;
 }
-
 
 #card .error {
   border-style: solid;
@@ -53,4 +54,10 @@ button{
 
 #card .failed {
   color: red;
+}
+
+
+.navbar-custom {
+  color: #FFFFFF;
+  background-color: blue;
 }

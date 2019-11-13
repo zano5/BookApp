@@ -11,6 +11,8 @@ export class AdminStudentService {
 
 addStudent(student) {
 
+  console.log(student);
+
   const studentFire = this.afs.collection('student');
   studentFire.add(student).then(() => {
 

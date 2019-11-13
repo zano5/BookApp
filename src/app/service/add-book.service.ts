@@ -150,4 +150,44 @@ getBooksSearch(name) {
 
 }
 
+reserveBook(book) {
+
+
+  const bookFire = this.afd.collection('books');
+
+  console.log(book.key);
+
+
+  bookFire.doc(book.key).update({reservedBy: parseInt(book.studentNo, 10), reserved: 'yes'}).then(() => {
+
+     alert('Successfully reserved book record');
+
+
+ }).catch(err => {
+
+   alert('Error reserved book: ' + err.message);
+ });
+
+}
+
+
+cancelReserve(book) {
+
+  const bookFire = this.afd.collection('books');
+
+  console.log(book.key);
+
+
+  bookFire.doc(book.key).update({reservedBy: '', reserved: 'no'}).then(() => {
+
+     alert('Successfully cancelled book reservation');
+
+
+ }).catch(err => {
+
+   alert('Error reserved book: ' + err.message);
+ });
+
+}
+
 }

@@ -20,6 +20,10 @@ export class ContentService {
 
       alert('Successfully Added Comment');
 
+    }).catch(err => {
+
+      alert('Error ' + err.message);
+
     });
 
   }
@@ -28,6 +32,27 @@ export class ContentService {
   getComment() {
 
      return this.afs.collection('comment').snapshotChanges();
+
+
+  }
+
+
+  deleteComment(comment) {
+
+    const fireComment = this.afs.collection('comment');
+
+    fireComment.doc(comment.key).delete().then(() => {
+
+      alert('Successfully Deleted Comment');
+
+    }).catch(err => {
+
+      alert('Error ' + err.message);
+
+    });
+
+
+
 
 
   }

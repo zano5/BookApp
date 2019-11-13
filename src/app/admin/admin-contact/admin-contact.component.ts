@@ -54,4 +54,19 @@ export class AdminContactComponent implements OnInit {
 
   }
 
+
+  deleteModal(contact) {
+
+    this.contact = contact;
+
+  }
+
+
+  deleteContact() {
+
+
+    this.contactService.deleteComment(this.contact);
+
+  }
+
 }

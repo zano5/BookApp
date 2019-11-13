@@ -75,12 +75,19 @@
       <p id="text_modal"> Author: {{bookItem?.Author}}</p>
       <p id="text_modal"> Publish Date: {{bookItem?.pubdate}}</p>
       <p id="text_modal"> Price: R {{bookItem?.price}}</p>
-
+      <p id="text_modal"> Student Number{{profile.studentNo}}</p>
+      <p id="text_modal"> Contact Number {{profile.contact}}</p>
 
 
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <div *ngIf="bookItem?.reserved =='no'">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="reserve(bookItem)">Reserve</button>
+       </div>
+       <div *ngIf="bookItem?.reserved =='yes'">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelReserve(bookItem)">Cancel Reserve</button>
+       </div>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
 
       </div>
     </div>

@@ -47,8 +47,6 @@ export class HomeComponent implements OnInit {
       alert('Please Enter Book Name In Input');
     }
 
-
-
   }
 
   addComment() {

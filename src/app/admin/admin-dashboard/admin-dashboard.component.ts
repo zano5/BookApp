@@ -1,3 +1,5 @@
+import { AddSubjectService } from './../../service/add-subject.service';
+import { AddSubjectComponent } from './../add-subject/add-subject.component';
 import { AdminCourseService } from 'src/app/service/admin-course.service';
 import { AdminSpecializationService } from './../../service/admin-specialization.service';
 import { AdminStudentService } from './../../service/admin-student.service';
@@ -21,6 +23,10 @@ export class AdminDashboardComponent implements OnInit {
 
   };
 
+  subjectList;
+
+  totSubject;
+
 
 
   updateValue;
@@ -32,7 +38,9 @@ export class AdminDashboardComponent implements OnInit {
 
     isbn: 0,
     name: '',
-    studentNo: ''
+    studentNo: '',
+    author: '',
+    pubDate: ''
 
   };
 
@@ -64,7 +72,7 @@ specializationList = [];
   studentList = [];
 
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private studentService: AdminStudentService, private  specializationSevice: AdminSpecializationService, private courseService: AdminCourseService, private recommendBookService: RecommendedBooksService ) { }
+  constructor(private router: Router, private studentService: AdminStudentService, private  specializationSevice: AdminSpecializationService, private courseService: AdminCourseService, private recommendBookService: RecommendedBooksService, private subjectService: AddSubjectService ) { }
 
   ngOnInit() {
 
@@ -127,13 +135,40 @@ specializationList = [];
     });
 
 
+    this.subjectService.getSubject().subscribe(data => {
+
+
+      this.subjectList = data.map(e => {
+
+        return{
+
+          key: e.payload.doc.id,
+          ...e.payload.doc.data()
+
+
+        } as Subject;
+
+      });
+
+
+      this.totSubject = this.subjectList.length;
+
+    });
+
+
+
+  }
+
+  addSubject() {
+
+    this.router.navigateByUrl('subject');
+
   }
 
 
 addCourse() {
 
   this.router.navigateByUrl('course');
-
 }
 
 
@@ -267,7 +302,28 @@ addRecommended() {
   }
 
 
+
+
 }
+
+
+
+
+deleteStudent() {
+
+  this.studentService.deleteStudent(this.student);
+
+}
+
+
+deleteOption(student) {
+
+  this.student = student;
+}
+
+
+
+
 
 
 

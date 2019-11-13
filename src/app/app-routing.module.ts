@@ -1,3 +1,4 @@
+import { AddSubjectComponent } from './admin/add-subject/add-subject.component';
 import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 import { AdminSignInComponent } from './admin/admin-sign-in/admin-sign-in.component';
 import { AdimOptionsMenuComponent } from './admin/adim-options-menu/adim-options-menu.component';
@@ -21,6 +22,7 @@ import { RegisterComponent } from './component/register/register.component';
 import { HSafetyComponent } from './component/h-safety/h-safety.component';
 import { SearchComponent } from './component/search/search.component';
 import { NLSearchComponent } from './component/n-lsearch/n-lsearch.component';
+import { ResetWEmailComponent } from './component/reset-wemail/reset-wemail.component';
 
 const routes: Routes = [
 {path: '', component: MenuComponent, children: [
@@ -56,7 +58,9 @@ const routes: Routes = [
 {path: 'search', component: SearchComponent},
 {path: 'contact', component: AdminContactComponent},
 {path: 'addStudent', component: AddStudentComponent},
-{path: 'nSearch', component: NLSearchComponent}
+{path: 'nSearch', component: NLSearchComponent},
+{path: 'resetEmail', component: ResetWEmailComponent},
+{path: 'subject', component: AddSubjectComponent}
 
 
 

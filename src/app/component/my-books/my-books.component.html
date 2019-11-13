@@ -64,23 +64,22 @@ border-radius: 5px;">
 
 
 
+<label for="inputState" id="item_style">Course</label>
+<select id="inputState" class="form-control"  [(ngModel)]="course">
+<option selected value="{{course.name}}" *ngFor="let course of courseList">{{course.name}}</option>
+
+</select>
 
 
-        <label for="inputState" id="item_style">Department</label>
-        <select id="inputState" class="form-control" [(ngModel)]="book.department">
-          <option selected value="Computer Science">Computer Science</option>
-          <option selected value="Information Systems">Information System</option>
-          <option selected value="Engineering">Engineering </option>
-        </select>
+<label for="inputState" id="item_style"  >Specialization</label>
+<select id="inputState" class="form-control" [(ngModel)]="student.specialization"[(ngModel)]="specialization" >
+<option selected value="{{special.name}}" *ngFor="let special of specializationList">{{special.name}}</option>
 
-        <label for="inputState" id="item_style">Course</label>
-        <select id="inputState" class="form-control" [(ngModel)]="book.course">
-          <option selected value="MultiMedia">Computer Science</option>
-          <option selected value="Business Applications">Business Applications</option>
-          <option selected value="Web Applications">Web Applications</option>
-          <option selected value="Industrial Systems">Industrial Systems</option>
+</select>
 
-        </select>
+
+
+     
 
         <div class="form-group" id="item_style">
             <label for="exampleInputPassword1">Price</label>
@@ -110,14 +109,14 @@ border-radius: 5px;">
 <!--Modal update-->
 
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"> Update Book</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Update Book</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
       <div class="form-group">
           <label for="exampleInputEmail1" id="item_style">Book Name</label>
           <input type="text" class="form-control"  placeholder="Name" [(ngModel)]="book.name">
@@ -125,7 +124,7 @@ border-radius: 5px;">
 
         <div class="form-group" id="item_style">
           <label for="exampleInputPassword1">ISBN</label>
-          <input type="number" class="form-control"  placeholder="ISBN Number" [(ngModel)]="book.isbn">
+          <input type="number" class="form-control"  placeholder="ISBN Number" maxlength="20" [(ngModel)]="book.isbn">
         </div>
 
         <div class="form-group" id="item_style">
@@ -154,26 +153,39 @@ border-radius: 5px;">
 
 
 
-        <label for="inputState" id="item_style">Department</label>
-        <select id="inputState" class="form-control" [(ngModel)]="book.department">
-          <option selected value="Computer Science">Computer Science</option>
-          <option selected value="Information Systems">Information System</option>
-          <option selected value="Engineering">Engineering </option>
+          
+
+          <label for="inputState" id="item_style">Course</label>
+          <select id="inputState" class="form-control"  [(ngModel)]="course">
+          <option selected value="{{course.name}}" *ngFor="let course of courseList">{{course.name}}</option>
+
+          </select>
+
+
+        <label for="inputState" id="item_style"  >Specialization</label>
+        <select id="inputState" class="form-control" [(ngModel)]="student.specialization"[(ngModel)]="specialization" >
+        <option selected value="{{special.name}}" *ngFor="let special of specializationList">{{special.name}}</option>
+
         </select>
 
-        <label for="inputState" id="item_style">Course</label>
-        <select id="inputState" class="form-control" [(ngModel)]="book.course">
-          <option selected value="MultiMedia">Computer Science</option>
-          <option selected value="Business Applications">Business Applications</option>
-          <option selected value="Web Applications">Web Applications</option>
-          <option selected value="Industrial Systems">Industrial Systems</option>
 
-        </select>
 
         <div class="form-group" id="item_style">
             <label for="exampleInputPassword1">Price</label>
             <input type="number" class="form-control"  placeholder="price" [(ngModel)]="book.price">
           </div>
+
+          <label for="inputState" id="item_style">Reserved</label>
+          <select id="inputState" class="form-control" [(ngModel)]="reservedOption">
+            <option selected value="yes">yes</option>
+            <option selected value="no">no</option>
+          </select>
+
+
+          <div class="form-group" id="item_style">
+              <label for="exampleInputPassword1">Reserved By</label>
+              <input type="number" class="form-control"  placeholder="StudentNo" [(ngModel)]="book.reservedBy">
+            </div>
 
 
 
@@ -193,6 +205,7 @@ border-radius: 5px;">
       <th scope="col">ISBN</th>
       <th scope="col">Publish Date</th>
       <th scope="col">Author</th>
+    
     </tr>
   </thead>
   <tbody>
@@ -202,7 +215,18 @@ border-radius: 5px;">
       <td>{{book.isbn}}</td>
       <td>{{book.pubDate}}</td>
       <td>{{book.author}}</td>
+    
+
+     
     </tr>
+
+
+      <div *ngIf= "book.reserved == 'yes'">
+
+        <p>Reserved By: {{profile.studentNo}}</p>
+        <p>Contact Details: {{profile.contact}}</p>
+
+      </div>
 
 
   </tbody>
@@ -210,7 +234,7 @@ border-radius: 5px;">
 
 
 
-<!--Modal update-->
+<!--Modal Delete-->
 
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -236,6 +260,11 @@ border-radius: 5px;">
       </div>
     </div>
   </div>
+
+
+  <!--Modal Reserved-->
+
+
 
 
 

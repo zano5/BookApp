@@ -6,6 +6,7 @@ import { AdminStudentService } from 'src/app/service/admin-student.service';
 import { AdminCourseService } from 'src/app/service/admin-course.service';
 import { AdminSpecializationService } from 'src/app/service/admin-specialization.service';
 import { RecommendedBooksService } from 'src/app/service/recommended-books.service';
+import { AddSubjectService } from 'src/app/service/add-subject.service';
 
 @Component({
   selector: 'app-add-student',
@@ -14,33 +15,27 @@ import { RecommendedBooksService } from 'src/app/service/recommended-books.servi
 })
 export class AddStudentComponent implements OnInit {
 
+  subjectStudent = {
+
+    key: '',
+    studentNo: '',
+    subjectID: ''
+  };
+
   student = {
 
     studentNo: '',
     password: '',
     course: '',
-    specialization: '',
+    specialization: ''
 
   };
 
-
-  recommondedBook = {
-
-    isbn: 0,
-    name: '',
-    studentNo: ''
-
-  };
+  subjectList = [];
 
 
 
-  upRecBook = {
-    key: '',
-    isbn: 0,
-    name: '',
-    studentNo: ''
 
-  };
 
   userInfo = [];
 
@@ -48,9 +43,9 @@ export class AddStudentComponent implements OnInit {
 
 
   specialization;
+  course;
 
 
-specialName;
 
 courseList = [];
 specializationList = [];
@@ -59,34 +54,33 @@ specializationList = [];
 
   studentList = [];
 
-  recommendedBookList = [];
+
+
+
+
 
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private studentService: AdminStudentService, private courseService: AdminCourseService, private  specializationSevice: AdminSpecializationService, private recommendBookService: RecommendedBooksService, private loginDao: LoginDAOService, private  userDao: UserService ) { }
+  constructor(private router: Router, private studentService: AdminStudentService, private courseService: AdminCourseService, private  specializationSevice: AdminSpecializationService, private recommendBookService: RecommendedBooksService, private loginDao: LoginDAOService, private  userDao: UserService, private subjectService: AddSubjectService, private specializationService: AdminSpecializationService) { }
 
   ngOnInit() {
 
 
 
 
-    this.specializationSevice.getSpecialization().subscribe(data => {
 
+    this.specializationService.getSpecialization().subscribe(data => {
 
-      this.specialObjectList = data.map(e => {
+      this.specializationList = data.map(e => {
 
         return{
-
           key: e.payload.doc.id,
           ...e.payload.doc.data()
-
         } as Specialization;
 
       });
 
+});
 
-
-
-    });
 
     this.studentService.getStudent().subscribe(data => {
 
@@ -126,6 +120,8 @@ specializationList = [];
 
 
 
+
+
   }
 
 
@@ -139,6 +135,7 @@ specializationList = [];
   addStudent() {
 
     this.student.specialization = this.specialization;
+    this.student.course = this.course;
 
     if (this.student.studentNo === '') {
 
@@ -190,7 +187,6 @@ specializationList = [];
         } else {
 
 
-
           this.studentService.addStudent(this.student);
 
 
@@ -204,7 +200,6 @@ specializationList = [];
 
 
 
-      // this.userInfo = this.userDao.getAdminStudent();
 
 
 
@@ -219,90 +214,14 @@ specializationList = [];
     }
 
 
-  }
-
-
-  addRecommended() {
-
-    if (this.recommondedBook.name === '') {
-
-
-      alert('Please Add Recommended Book Name');
-
-    } else if (this.recommondedBook.isbn === 0) {
-
-      alert('Please Add Recommended Book ISBN');
-
-    } else {
-
-      console.log(this.recommondedBook);
-
-      if (this.student.studentNo !== '') {
-
-
-      this.recommondedBook.studentNo = this.student.studentNo;
-
-      this.recommendBookService.addRecommendedBook(this.recommondedBook);
-
-      this.recommondedBook.name = '';
-      this.recommondedBook.isbn = 0;
-
-      } else {
-
-          alert('Student Number Required');
-
-      }
-
-    }
 
 
   }
 
 
-  onSearchChange(searchValue: string): void {
-
-
-    this.recommendBookService.getRecommendedBooks(searchValue).subscribe(data => {
-
-
-      this.recommendedBookList = data.map(e => {
-
-
-        return{
-
-          key: e.payload.doc.id,
-          ...e.payload.doc.data()
-
-        } as RecomendedBook;
-
-      });
-
-
-      console.log('recommended', this.recommendedBookList);
 
 
 
-});
-  }
 
-
-  deleteRecommendedBook(book) {
-
-    this.recommendBookService.deleteRecommendedBook(book);
-
-  }
-
-  editBook(book) {
-
-    this.upRecBook =  book;
-
-  }
-
-
-  updateRecomBook() {
-
-    this.recommendBookService.updateRecommendedBook(this.upRecBook);
-
-  }
 
 }

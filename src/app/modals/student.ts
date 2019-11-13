@@ -11,6 +11,6 @@ class Student {
   specialization: string;
   course: string;
   gender: string;
-  suggestedBooks: RecomendedBook[];
+
 
 }

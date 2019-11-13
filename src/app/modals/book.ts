@@ -9,6 +9,8 @@ class Book {
   studentNo: string;
   url: string;
   pending: string;
+  reservedBy: string;
+  reserved: string;
 
 
 

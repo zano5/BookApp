@@ -2,7 +2,7 @@
 <div class="container" style="margin-top: 20px; margin-bottom: 20px;">
   <div class="row">
     <div class="col-sm">
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 18rem;"  style="background: aqua">
 
         <div class="card-body" (click)="addCourse()">
           <h5 class="card-title" style="text-align: center" >Courses</h5>
@@ -17,7 +17,7 @@
 
       <div class="card" style="width: 18rem;">
 
-        <div class="card-body" (click)="addSpecialization()">
+        <div class="card-body" (click)="addSpecialization()" style="background-color: blue">
           <h5 class="card-title" style="text-align: center" >Specialization</h5>
 
 
@@ -30,12 +30,12 @@
 
     <div class="col-sm">
 
-      <div class="card" style="width: 18rem;">
+      <div class="card"   (click)="addSubject()"  style="width: 18rem;" style="background-color: lightgray">
 
         <div class="card-body">
-          <h5 class="card-title" style="text-align: center">Total Students</h5>
+          <h5 class="card-title" style="text-align: center">Total Subjects</h5>
 
-            <p style="text-align: center">{{totStudent}}</p>
+            <p style="text-align: center">{{totSubject}}</p>
         </div>
       </div>
       </div>
@@ -59,14 +59,17 @@ border-radius: 5px;">
           + Student
           </button>
 
-          <button type="button"  (click)="addRecommendation()" style=" background-color: Transparent;
+
+          <button type="button"   style=" background-color: Transparent; 
           background-repeat:no-repeat;
           border: none;
           cursor:pointer;
           overflow: hidden;
-          outline:none;" data-toggle="modal"   data-target="#updateRecommendedModal">
-            Recommend Books
+          outline:none;" (click)="addSubject()">
+            + Subject
             </button>
+  
+
 
     </form>
   </nav>
@@ -87,6 +90,9 @@ border-radius: 5px;">
       <td>{{student.password}}</td>
       <td>{{student.course}}</td>
       <td>{{student.specialization}}</td>
+
+    
+
     </tr>
 
 
@@ -97,7 +103,7 @@ border-radius: 5px;">
 
 <!--Modal add-->
 
-<div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="addStudentModalLabel" aria-hidden="true" >
+<div class="modal fade" id="addSubjectModal" tabindex="-1" role="dialog" aria-labelledby="addStudentModalLabel" aria-hidden="true" >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -111,39 +117,10 @@ border-radius: 5px;">
           <input type="number" class="form-control"  placeholder="Student Number"  [(ngModel)]="student.studentNo">
         </div>
 
-        <div class="form-group" id="item_style">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="text" class="form-control"  placeholder="Password" [(ngModel)]="student.password">
-        </div>
+       
 
 
-
-        <label for="inputState" id="item_style">Specialization</label>
-        <select id="inputState" class="form-control" [(ngModel)]="specialization">
-          <option selected value="{{special.name}}" *ngFor="let special of specialObjectList">{{special.name}}</option>
-
-
-        </select>
-
-        <div *ngFor=" let special of specialObjectList">
-
-          <div *ngIf= 'specialization === special.name'>
-
-
-              <label for="inputState" id="item_style">Course</label>
-        <select id="inputState" class="form-control" [(ngModel)]="student.course">
-          <option selected value="{{special.courseName}}" >{{special.courseName}}</option>
-
-
-        </select>
-
-
-
-          </div>
-
-        </div>
-
-
+     
 
         <div class="form-group" id="item_style">
           <label for="exampleInputPassword1">ISBN</label>
@@ -166,7 +143,7 @@ border-radius: 5px;">
             {{book.name}}
           </div>
 
-          <div class="col-sm-2" (click)="delete(i)" >
+          <div class="col-sm-2"  aria-hidden="true" data-toggle="modal"  data-target="#updateRecommendedModal"  (click)="deleteModal(book)">
             <i class="fa fa-trash" aria-hidden="true" data-toggle="modal"  (click)="options(i)"  data-target="#updateRecommendedModal"></i>
 
 
@@ -191,17 +168,13 @@ border-radius: 5px;">
 
       <div class="modal-footer">
 
-          <button  type="button" (click)="addRecommended()" class="btn btn-secondary" style="width:100%">Add Recommended Book</button>
+          <button  type="button" (click)="addSubject()" class="btn btn-secondary" style="width:100%">Add Subject</button>
 
         </div>
 
 
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" style="width:100%" (click)="addStudent()" >Add</button>
-
-
-      </div>
+    
     </div>
   </div>
 </div>
@@ -264,8 +237,8 @@ border-radius: 5px;">
 
 
         <div class="modal-footer">
+          <button type="button" class="btn btn-danger" style="width:100%" aria-hidden="true" data-toggle="modal"  data-target="#deleteModal" (click)="deleteOption(student)" >Delete</button>
           <button type="button" class="btn btn-primary" style="width:100%" (click)="updateStudent()" >Update</button>
-
 
         </div>
       </div>
@@ -415,6 +388,16 @@ border-radius: 5px;">
 
 
 
+      <div class="form-group" id="item_style">
+        <label for="exampleInputPassword1">Author</label>
+        <input type="text" class="form-control"  placeholder="Recommended Book" [(ngModel)]="recommondedBook.name">
+      </div>
+
+
+      <div class="form-group" id="item_style">
+        <label for="exampleInputPassword1">PubDate</label>
+        <input type="text" class="form-control"  placeholder="Recommended Book" [(ngModel)]="recommondedBook.name">
+      </div>
 
 
 
@@ -427,3 +410,29 @@ border-radius: 5px;">
   </div>
 </div>
 
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Alert!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+
+        <p>Are You sure you want to delete student?</p>
+
+
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" style="width:100%" (click)="deleteStudent()">Yes</button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
