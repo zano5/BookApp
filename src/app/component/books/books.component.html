@@ -35,22 +35,38 @@
 
 
 
+       
 
-        <div class="card" style="width: 18rem;">
-            <img [attr.src]="book.url | async" class="card-img-top" alt="..." style="height:300px ">
-            <div class="card-body">
-              <h5 class="card-title">{{book.name}}</h5>
-              <p class="card-text">Price:R {{book.price}}</p>
-              <a class="btn btn-primary" style="width:100%" data-toggle="modal" data-target="#addModal" (click)="collectBook(book)">View Details</a>
+
+
+    
+        
+
+       
+            <div class="card" style="width: 18rem;">
+                <img [attr.src]="book.url | async" class="card-img-top" alt="..." style="height:300px ">
+                <div class="card-body">
+                  <h5 class="card-title">{{book.name}}</h5>
+                  <p class="card-text">Price:R {{book.price}}</p>
+                  <p *ngIf=""></p>
+                  <a class="btn btn-primary" style="width:100%" data-toggle="modal" data-target="#addModal" (click)="collectBook(book)">View Details</a>
+                </div>
+              </div>
+    
+              </div>
+    
             </div>
-          </div>
+       
+    
+       
 
-          </div>
+  
+    
+      
+       
 
-        </div>
-
-
-
+      
+      
 
 
   </div>
