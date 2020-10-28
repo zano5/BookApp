@@ -41,6 +41,19 @@
       </div>
 
 
+      <div class="col-sm">
+
+        <div class="card"   (click)="goTeacher()"  style="width: 18rem;" style="background-color: lightgray">
+
+          <div class="card-body">
+            <h5 class="card-title" style="text-align: center">Total Teachers</h5>
+
+              <p style="text-align: center">{{totTeachers}}</p>
+          </div>
+        </div>
+        </div>
+
+
 
   </div>
 </div>
@@ -60,7 +73,7 @@ border-radius: 5px;">
           </button>
 
 
-          <button type="button"   style=" background-color: Transparent; 
+          <button type="button"   style=" background-color: Transparent;
           background-repeat:no-repeat;
           border: none;
           cursor:pointer;
@@ -68,7 +81,7 @@ border-radius: 5px;">
           outline:none;" (click)="addSubject()">
             + Subject
             </button>
-  
+
 
 
     </form>
@@ -91,7 +104,7 @@ border-radius: 5px;">
       <td>{{student.course}}</td>
       <td>{{student.specialization}}</td>
 
-    
+
 
     </tr>
 
@@ -117,10 +130,10 @@ border-radius: 5px;">
           <input type="number" class="form-control"  placeholder="Student Number"  [(ngModel)]="student.studentNo">
         </div>
 
-       
 
 
-     
+
+
 
         <div class="form-group" id="item_style">
           <label for="exampleInputPassword1">ISBN</label>
@@ -143,8 +156,8 @@ border-radius: 5px;">
             {{book.name}}
           </div>
 
-          <div class="col-sm-2"  aria-hidden="true" data-toggle="modal"  data-target="#updateRecommendedModal"  (click)="deleteModal(book)">
-            <i class="fa fa-trash" aria-hidden="true" data-toggle="modal"  (click)="options(i)"  data-target="#updateRecommendedModal"></i>
+          <div class="col-sm-2"  aria-hidden="true" data-toggle="modal"  data-target="#updateRecommendedModal" >
+            <i class="fa fa-trash" aria-hidden="true" data-toggle="modal"  data-target="#updateRecommendedModal"></i>
 
 
 
@@ -174,7 +187,7 @@ border-radius: 5px;">
 
 
 
-    
+
     </div>
   </div>
 </div>

@@ -1,0 +1,98 @@
+<app-adim-options-menu></app-adim-options-menu>
+
+<nav class="navbar navbar-light bg-light" style="margin-top:10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+border-radius: 5px;">
+    <a class="navbar-brand"></a>
+    <form class="form-inline">
+
+        <button type="button"  (click)="addTeacher()" style=" background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        outline:none;">
+          + Teacher
+          </button>
+
+
+
+
+
+    </form>
+  </nav>
+
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Employee Number</th>
+        <th scope="col">Password</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr  data-toggle="modal" data-target="#updateTeacherModal" *ngFor="let teacher of teacherList" (click)="update(teacher)">
+
+        <td>{{teacher.employeeNumber}}</td>
+        <td>{{teacher.password}}</td>
+
+
+
+
+      </tr>
+
+
+    </tbody>
+  </table>
+
+
+
+<!--Modal update-->
+
+<div class="modal fade" id="updateTeacherModal" tabindex="-1" role="dialog" aria-labelledby="updateTeacherModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Teacher</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="form-group">
+          <label for="exampleInputEmail1" id="item_style">Employee Number</label>
+          <input type="number" class="form-control"  placeholder="Employee Number"  [(ngModel)]="teacher.employeeNumber">
+        </div>
+
+        <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="text" class="form-control"  placeholder="Password" [(ngModel)]="teacher.password">
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" style="width:100%" aria-hidden="true" data-toggle="modal"  data-target="#deleteModal" (click)=" deleteTeacher(teacher)" >Delete</button>
+        <button type="button" class="btn btn-primary" style="width:100%" (click)="updateTeacher()" >Update</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--Modal update-->
+

@@ -47,6 +47,36 @@ downloadURL;
   }
 
 
+  uploadTeacherBook(event, teacherBook){
+
+
+    const bookName = this.makeid(10) + '.jpg';
+   // this.afs.upload('/upload/to/this-path', event.target.files[0]);
+
+  // const randomId = Math.random().toString(36).substring(2);
+    const file = event.target.files[0];
+    const filePath = 'uploads/books/' + bookName;
+    this.ref = this.afs.ref(filePath);
+
+    this.task = this.afs.upload(filePath, file);
+
+    teacherBook.url = bookName;
+
+    this.addTeacherBook(teacherBook);
+    this.addBook(teacherBook);
+
+
+
+
+    return this.uploadProgress = this.task.percentageChanges();
+
+  }
+
+
+
+
+
+
   uploadBookImage(event, book) {
 
      const bookName = this.makeid(10) + '.jpg';
@@ -189,5 +219,38 @@ cancelReserve(book) {
  });
 
 }
+
+
+
+addTeacherBook(teacherBook) {
+
+
+  this.afd.collection('TeacherBook').add(teacherBook).catch(() => {
+
+
+
+
+
+
+  }).catch(err => {
+
+
+
+
+
+  });
+}
+
+
+getTeacherBook(teacher){
+
+  return this.afd.collection('TeacherBook', ref => ref.where('employeeNumber', '==', teacher.employeeNumber) ).snapshotChanges();
+}
+
+
+
+
+
+
 
 }

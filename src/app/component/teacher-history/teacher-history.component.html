@@ -1,0 +1,46 @@
+
+
+<nav class="navbar navbar-light bg-light" style="margin-top:10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+border-radius: 5px;">
+<button (click)= "back()">Back</button>
+
+    <a class="navbar-brand"></a>
+
+
+  </nav>
+
+<div class="book_content">
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Book name</th>
+      <th scope="col">Book ISBN</th>
+      <th scope="col">Book Price</th>
+      <th scope="col">Buyer</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr  data-toggle="modal" data-target="#updateModal" *ngFor="let purchase of purchaseList">
+
+      <td>{{purchase.Bookname}}</td>
+      <td>{{purchase.Bookisbn}}</td>
+      <td>{{purchase.BookPrice}}</td>
+      <td>{{purchase.buyer}}</td>
+
+
+
+    </tr>
+
+
+
+
+  </tbody>
+</table>
+
+
+

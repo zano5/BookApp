@@ -56,7 +56,7 @@ export class ProfileComponent implements OnInit {
 
         return{
             key: e.payload.doc.id,
-            ...e.payload.doc.data()
+            ...e.payload.doc.data() as Subject
         } as Subject;
 
 

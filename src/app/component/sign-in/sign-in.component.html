@@ -12,7 +12,34 @@
               <div class="col-md-9 col-lg-8 mx-auto" >
                 <h3 class="login-heading mb-4">Welcome back!</h3>
 
-                  <div class="form-group">
+
+
+                <h6>Login As</h6>
+
+                <div class="row">
+                  <div class="col-sm">
+
+
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="student"  [checked]="student" (change)="onStudent()">
+                      <label class="form-check-label" > <i>Student</i></label>
+                    </div>
+
+                  </div>
+                  <div class="col-sm">
+
+
+
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="teacher" [checked]="teacher"  (change)=" onTeacher()">
+                      <label class="form-check-label" ><i>Teacher</i></label>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                  <div class="form-group" style="margin-top: 10px;">
                       <label for="inputEmail">Student Number</label>
                     <input type="number" id="inputEmail" class="form-control" placeholder="Student Number"  autofocus [(ngModel)]="user.studentNo" required>
 
@@ -23,6 +50,9 @@
                     <input type="password" id="inputPassword" class="form-control" placeholder="Password" [(ngModel)]="user.password" required>
 
                   </div>
+
+
+
 
 
                   <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" (click)="moveDetail()">Sign in</button>

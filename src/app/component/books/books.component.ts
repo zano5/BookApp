@@ -52,7 +52,7 @@ export class BooksComponent implements OnInit {
 
         return{
           key: e.payload.doc.id,
-          ...e.payload.doc.data()
+          ...e.payload.doc.data() as Book
         } as Book;
 
 
@@ -115,7 +115,7 @@ export class BooksComponent implements OnInit {
         return{
 
           key: e.payload.doc.id,
-          ... e.payload.doc.data()
+          ... e.payload.doc.data() as Student
 
         } as Student;
 

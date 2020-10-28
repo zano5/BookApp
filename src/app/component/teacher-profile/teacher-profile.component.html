@@ -1,0 +1,159 @@
+<!-- <div class="profile">
+
+
+
+
+  <div class="row" style="text-align: center;">
+
+
+    <div class="col-sm" (click)="goBooks()">
+
+        View Books
+
+
+      </div>
+
+      <div class="col-sm" (click)="goHistory()">
+
+        Purchase History
+
+      </div>
+
+
+
+
+      </div>
+
+</div>
+
+
+
+<div class="form-group col-md-12">
+
+  <label for="inputAddress"> Employee Number: {{teacher.employeeNumber}}</label>
+</div>
+
+<div class="form-group col-md-12">
+  <label for="inputAddress">Name</label>
+  <input type="text" class="form-control"  placeholder="Name"  [(ngModel)]="teacher.name">
+</div>
+
+
+<div class="form-group col-md-12">
+  <label for="inputAddress">Surname</label>
+  <input type="text" class="form-control"  placeholder="Surname"  [(ngModel)]="teacher.surname" >
+</div>
+
+
+<div class="form-group col-md-12">
+  <label for="inputAddress">Contact Number</label>
+  <input type="number" class="form-control"  placeholder="Contact Number"  [(ngModel)]="teacher.contact" >
+</div>
+
+
+<div class="form-group col-md-12">
+  <label for="inputAddress">Email</label>
+  <input type="text" class="form-control"  placeholder="Email" [(ngModel)]="teacher.email"  >
+</div>
+
+<div class="form-group col-md-12">
+  <label for="inputAddress">Password</label>
+  <input type="text" class="form-control"  placeholder="Password"   [(ngModel)]="teacher.password"  >
+</div>
+
+<button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" (click)="updateTeacher()">Update</button> -->
+
+
+
+<div class="sidemenu">
+
+
+
+  <div class="menu">
+
+
+    <img src="assets/exo.png" width="100" height="100">
+
+
+    <div (click)="goHistory()" id="menuItem"  >
+
+      Purchase History
+
+    </div>
+
+    <div (click)="goBooks()" id="menuItem" >
+
+      View Books
+
+
+    </div>
+
+
+    <div (click)="goBooks()" id="menuItem" >
+
+      View Content
+
+
+    </div>
+
+
+    <div (click)="goBooks()" id="menuItem" >
+
+     Withdraw Funds
+
+
+    </div>
+
+
+    <div id= "divider"></div>
+
+    <div (click)="signOut()" id="menuItem" >
+
+      <span class="oi oi-account-logout"></span> Sign Out
+
+
+    </div>
+  </div>
+
+  <div class="content">
+      <span id="clickable">
+
+        <h3 style="margin-top:50px;">Profile Information</h3>
+
+        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
+          <label for="inputAddress">Name</label>
+          <input type="text" class="form-control"  placeholder="Name"  [(ngModel)]="teacher.name">
+        </div>
+
+
+        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
+          <label for="inputAddress">Name</label>
+          <input type="text" class="form-control"  placeholder="Name"  [(ngModel)]="teacher.name">
+        </div>
+
+
+        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
+          <label for="inputAddress">Contact Number</label>
+          <input type="number" class="form-control"  placeholder="Contact Number"  [(ngModel)]="teacher.contact" >
+        </div>
+
+
+        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
+          <label for="inputAddress">Email</label>
+          <input type="text" class="form-control"  placeholder="Email" [(ngModel)]="teacher.email"  >
+        </div>
+
+
+        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
+          <label for="inputAddress">Password</label>
+          <input type="text" class="form-control"  placeholder="Password"   [(ngModel)]="teacher.password"  >
+        </div>
+
+
+
+        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
+        <button class="btn  btn-primary  btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" (click)="updateTeacher()">Update</button>
+    </div>
+      </span>
+  </div>
+  <div>

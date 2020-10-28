@@ -1,3 +1,4 @@
+
 import { AddSubjectService } from './../../service/add-subject.service';
 import { AddSubjectComponent } from './../add-subject/add-subject.component';
 import { AdminCourseService } from 'src/app/service/admin-course.service';
@@ -6,6 +7,7 @@ import { AdminStudentService } from './../../service/admin-student.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RecommendedBooksService } from 'src/app/service/recommended-books.service';
+import { TeacherService } from 'src/app/service/teacher.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -28,7 +30,7 @@ export class AdminDashboardComponent implements OnInit {
   totSubject;
 
 
-
+totTeachers;
   updateValue;
   totStudent;
   totCourse;
@@ -72,7 +74,7 @@ specializationList = [];
   studentList = [];
 
   // tslint:disable-next-line:max-line-length
-  constructor(private router: Router, private studentService: AdminStudentService, private  specializationSevice: AdminSpecializationService, private courseService: AdminCourseService, private recommendBookService: RecommendedBooksService, private subjectService: AddSubjectService ) { }
+  constructor(private router: Router, private studentService: AdminStudentService, private  specializationSevice: AdminSpecializationService, private courseService: AdminCourseService, private recommendBookService: RecommendedBooksService, private subjectService: AddSubjectService, private teacherDao: TeacherService ) { }
 
   ngOnInit() {
 
@@ -86,7 +88,7 @@ specializationList = [];
         return{
 
           key: e.payload.doc.id,
-          ...e.payload.doc.data()
+          ...e.payload.doc.data() as Specialization
 
         } as Specialization;
 
@@ -105,7 +107,7 @@ specializationList = [];
         return{
 
           key: e.payload.doc.id,
-          ...e.payload.doc.data()
+          ...e.payload.doc.data() as Student
 
         } as Student;
 
@@ -123,7 +125,7 @@ specializationList = [];
 
           return{
             key: e.payload.doc.id,
-            ...e.payload.doc.data()
+            ...e.payload.doc.data() as Course
           } as Course;
 
 
@@ -143,7 +145,7 @@ specializationList = [];
         return{
 
           key: e.payload.doc.id,
-          ...e.payload.doc.data()
+          ...e.payload.doc.data() as Subject
 
 
         } as Subject;
@@ -154,6 +156,17 @@ specializationList = [];
       this.totSubject = this.subjectList.length;
 
     });
+
+
+    this.teacherDao. getTeacherCount().subscribe(data => {
+
+
+
+      this.totTeachers = data.length;
+
+
+
+    })
 
 
 
@@ -231,7 +244,7 @@ onSearchChange(searchValue: string): void {
       return{
 
         key: e.payload.doc.id,
-        ...e.payload.doc.data()
+        ...e.payload.doc.data() as RecomendedBook
 
       } as RecomendedBook;
 
@@ -319,6 +332,12 @@ deleteStudent() {
 deleteOption(student) {
 
   this.student = student;
+}
+
+
+goTeacher() {
+
+  this.router.navigateByUrl("teacher");
 }
 
 

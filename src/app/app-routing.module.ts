@@ -1,3 +1,8 @@
+import { TeacherHistoryComponent } from './component/teacher-history/teacher-history.component';
+import { TeacherBooksComponent } from './component/teacher-books/teacher-books.component';
+import { TeacherProfileComponent } from './component/teacher-profile/teacher-profile.component';
+import { TeacherComponent } from './admin/teacher/teacher.component';
+import { AddTeacherComponent } from './admin/add-teacher/add-teacher.component';
 import { AddSubjectComponent } from './admin/add-subject/add-subject.component';
 import { AdminContactComponent } from './admin/admin-contact/admin-contact.component';
 import { AdminSignInComponent } from './admin/admin-sign-in/admin-sign-in.component';
@@ -60,7 +65,12 @@ const routes: Routes = [
 {path: 'addStudent', component: AddStudentComponent},
 {path: 'nSearch', component: NLSearchComponent},
 {path: 'resetEmail', component: ResetWEmailComponent},
-{path: 'subject', component: AddSubjectComponent}
+{path: 'subject', component: AddSubjectComponent},
+{path: 'add-teacher', component: AddTeacherComponent},
+{path: 'teacher', component: TeacherComponent},
+{path: 'teacher-profile', component: TeacherProfileComponent},
+{path: 'teacher-books', component: TeacherBooksComponent},
+{path: 'teacher-history', component: TeacherHistoryComponent}
 
 
 

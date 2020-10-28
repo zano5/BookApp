@@ -1,3 +1,4 @@
+import { TeacherService } from 'src/app/service/teacher.service';
 import { LoginDAOService } from './../../service/login-dao.service';
 import { UserService } from './../../service/user.service';
 
@@ -14,6 +15,13 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
 
+
+  teacherUser = {} as Teacher;
+
+  tradeSource1;
+  tradeSource2;
+  teacher = false;
+  student = true;
   userInfo;
   user = {
     studentNo: '',
@@ -23,7 +31,7 @@ export class SignInComponent implements OnInit {
 
 
 
-  constructor(private router: Router, private UserDao: UserService, private loginService: LoginDAOService) { }
+  constructor(private router: Router, private UserDao: UserService, private loginService: LoginDAOService, private teacherDao: TeacherService) { }
 
   ngOnInit() {
   }
@@ -36,6 +44,10 @@ export class SignInComponent implements OnInit {
     console.log(this.user.password);
 
 
+    if(this.student == true) {
+
+
+
     this.loginService.userLogin(this.user).subscribe(data => {
 
 
@@ -46,7 +58,7 @@ export class SignInComponent implements OnInit {
 
         return{
           key: e.payload.doc.id,
-          ...e.payload.doc.data()
+          ...e.payload.doc.data() as Student
         } as Student;
       });
 
@@ -71,7 +83,40 @@ export class SignInComponent implements OnInit {
 
     }) ;
 
+  } else if (this.teacher == true ){
 
+    this.loginService.teacherLogin(this.user).subscribe(data => {
+
+     this.teacherUser = data.data() as Teacher;
+
+     if((this.user.studentNo == this.teacherUser.employeeNumber) && (this.user.password == this.teacherUser.password) ) {
+
+  this.teacherDao.setTeacher(this.teacherUser);
+
+
+console.log("teacher",data);
+
+    this.router.navigateByUrl("teacher-profile");
+
+
+  } else{
+
+    alert("Inccorrect Login Details");
+  }
+
+    });
+
+
+
+
+
+
+
+  }else{
+
+
+    alert("Select User Type");
+  }
 
 
   }
@@ -94,6 +139,17 @@ export class SignInComponent implements OnInit {
 
     this.router.navigateByUrl('adminSign');
 
+  }
+
+
+  onStudent(){
+
+    this.teacher = false;
+  }
+
+
+  onTeacher(){
+    this.student = false;
   }
 
   }

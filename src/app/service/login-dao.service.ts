@@ -64,6 +64,15 @@ export class LoginDAOService {
 }
 
 
+teacherLogin(login){
+
+
+  return this.Adf.collection('Teachers', ref => ref.where('employeeNo', '==', login.studentNo).where('employeeNo', '==', login.password )).doc('TUT'+login.studentNo).get();
+
+
+}
+
+
 resetPassword(email: string) {
   this.fireAuth.auth.sendPasswordResetEmail(email).then(() => {
 

@@ -1,4 +1,5 @@
-class Book {
+class TeacherBook{
+
   key?: string;
   name: string;
   isbn: number;
@@ -6,15 +7,12 @@ class Book {
   department: string;
   price: number;
   status: string;
-  studentNo: string;
-  url: string;
-  pending: string;
-  reservedBy: string;
-  reserved: string;
-  pubDate: string;
   author: string;
-
-
+  pubDate: string;
+  employeeNumber: string;
+  url: string;
+  specialization: string;
+  course: string;
 
 
 }

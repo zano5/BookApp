@@ -36,6 +36,11 @@ import { NLSearchComponent } from './component/n-lsearch/n-lsearch.component';
 import { ResetWEmailComponent } from './component/reset-wemail/reset-wemail.component';
 import { AdminSubjectComponent } from './component/admin-subject/admin-subject.component';
 import { AddSubjectComponent } from './admin/add-subject/add-subject.component';
+import { TeacherComponent } from './admin/teacher/teacher.component';
+import { AddTeacherComponent } from './admin/add-teacher/add-teacher.component';
+import { TeacherProfileComponent } from './component/teacher-profile/teacher-profile.component';
+import { TeacherBooksComponent } from './component/teacher-books/teacher-books.component';
+import { TeacherHistoryComponent } from './component/teacher-history/teacher-history.component';
 
 
 
@@ -79,7 +84,12 @@ const firebaseConfig = {
     NLSearchComponent,
     ResetWEmailComponent,
     AdminSubjectComponent,
-    AddSubjectComponent
+    AddSubjectComponent,
+    TeacherComponent,
+    AddTeacherComponent,
+    TeacherProfileComponent,
+    TeacherBooksComponent,
+    TeacherHistoryComponent
   ],
   imports: [
     BrowserModule,

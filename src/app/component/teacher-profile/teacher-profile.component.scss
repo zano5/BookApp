@@ -1,0 +1,73 @@
+// .profile{
+
+// height: 200px;
+// width: 100%;
+// background-color: lightblue;
+
+// }
+
+
+.test{
+  background-color:red;
+}
+
+.sidemenu{
+  display:flex;
+  flex-direction: row;
+  position:relative;
+  height:100%;
+  border-start-end-radius: 5px;
+
+}
+
+.menu{
+  width:300px;
+  transition: 0.3s all ease-in-out;
+  background-color: rgb(15, 64, 201);
+}
+
+.menuClosed{
+  background-color:red;
+  transition: 0.3s all ease-in-out;
+  transform: translateX(-200px);
+  margin-right: -200px;
+}
+
+.content{
+
+  flex:1;
+  min-width: 900px;
+}
+
+
+#menuItem{
+
+  margin-top: 10px;
+  margin-left: 20px;
+  color: white;
+}
+
+img{
+
+  display:block;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+#clickable{
+
+
+  text-align: center;
+
+}
+
+#divider{
+
+  border-top: 1px solid black;
+
+
+}

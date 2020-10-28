@@ -1,0 +1,254 @@
+
+
+<nav class="navbar navbar-light bg-light" style="margin-top:10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+border-radius: 5px;">
+
+<button (click)= "back()">Back</button>
+    <a class="navbar-brand"></a>
+    <form class="form-inline">
+
+        <button type="button"  data-toggle="modal" data-target="#addModal" style=" background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        outline:none;">
+          + Add Boook
+          </button>
+    </form>
+  </nav>
+
+<div class="book_content">
+
+
+
+
+
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"> Add Book</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="form-group" id="item_style">
+          <label for="exampleInputEmail1">Book Name</label>
+          <input type="text" class="form-control"  placeholder="Name" [(ngModel)]="book.name">
+        </div>
+
+        <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">ISBN</label>
+          <input type="number" class="form-control"  placeholder="ISBN Number" [(ngModel)]="book.isbn">
+        </div>
+
+        <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">Publisher Date</label>
+          <input type="date" class="form-control"  placeholder="Publisher Date" [(ngModel)]="book.pubDate">
+        </div>
+
+
+
+        <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">Author</label>
+          <input type="text" class="form-control"  placeholder="Author" [(ngModel)]="book.author">
+        </div>
+
+
+
+
+        <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">Description</label>
+          <input type="text" class="form-control"  placeholder="description" [(ngModel)]="book.description">
+        </div>
+
+
+
+<ng-container *ngIf="all$ | async; else loading; let all">
+<label for="inputState" id="item_style">Course</label>
+<select id="inputState" class="form-control"  [(ngModel)]="course">
+<option selected value="{{course.name}}" *ngFor="let course of all.courses">{{course.name}}</option>
+
+</select>
+
+
+
+
+
+<label for="inputState" id="item_style"  >Specialization</label>
+<select id="inputState" class="form-control" [(ngModel)]="student.specialization"[(ngModel)]="specialization" >
+<option selected value="{{special.name}}" *ngFor="let special of all.specializations">{{special.name}}</option>
+
+</select>
+
+
+
+</ng-container>
+
+<ng-template #loading>
+  Loading...
+</ng-template>
+
+
+
+        <div class="form-group" id="item_style">
+            <label for="exampleInputPassword1">Price</label>
+            <input type="number" class="form-control"  placeholder="price" [(ngModel)]="book.price">
+          </div>
+
+
+ <label class="image-upload-container btn btn-bwm" for="file">
+    <span>Select Image</span>
+<input type="file" (change)="upload($event)" accept=".png,.jpg" />
+
+</label>
+
+          <progress max="100" [value]="(uploadProgress | async)" style="width:100%"></progress>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addBook()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--Modal update-->
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Update Book</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <div class="form-group">
+          <label for="exampleInputEmail1" id="item_style">Book Name</label>
+          <input type="text" class="form-control"  placeholder="Name" [(ngModel)]="book.name">
+        </div>
+
+        <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">ISBN</label>
+          <input type="number" class="form-control"  placeholder="ISBN Number" maxlength="20" [(ngModel)]="book.isbn">
+        </div>
+
+
+
+
+        <div class="form-group" id="item_style">
+          <label for="exampleInputPassword1">Description</label>
+          <input type="text" class="form-control"  placeholder="description" [(ngModel)]="book.description">
+        </div>
+
+
+        <div class="form-group" id="item_style">
+            <label for="exampleInputPassword1">Pending</label>
+            <input type="text" class="form-control"  placeholder="Status" [(ngModel)]="book.status">
+          </div>
+
+
+
+
+
+          <label for="inputState" id="item_style">Course</label>
+          <select id="inputState" class="form-control"  [(ngModel)]="course">
+          <option selected value="{{course.name}}" *ngFor="let course of courseList">{{course.name}}</option>
+
+          </select>
+
+
+        <label for="inputState" id="item_style"  >Specialization</label>
+        <select id="inputState" class="form-control" [(ngModel)]="student.specialization"[(ngModel)]="specialization" >
+        <option selected value="{{special.name}}" *ngFor="let special of specializationList">{{special.name}}</option>
+
+        </select>
+
+
+
+        <div class="form-group" id="item_style">
+            <label for="exampleInputPassword1">Price</label>
+            <input type="number" class="form-control"  placeholder="price" [(ngModel)]="book.price">
+          </div>
+
+          <div class="form-group" id="item_style">
+            <label for="exampleInputPassword1">Author</label>
+            <input type="number" class="form-control"  placeholder="price" [(ngModel)]="book.author">
+          </div>
+
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" style="width:100%" (click)="updateBook()">Update</button>
+        <button type="button" class="btn btn-danger" style="width:100%"  data-toggle="modal" data-target="#deleteModal">Delete</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">ISBN</th>
+      <th scope="col">Publish Date</th>
+      <th scope="col">Price</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr  data-toggle="modal" data-target="#updateModal" *ngFor="let book of booksList" (click)="update(book)" class="img-fluid animated fadeIn">
+
+      <td>{{book.name}}</td>
+      <td>{{book.isbn}}</td>
+      <td>{{book.pubDate}}</td>
+      <td>{{book.price}}</td>
+
+
+
+    </tr>
+
+
+
+
+  </tbody>
+</table>
+
+
+
+<!--Modal Delete-->
+
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Alert!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+
+        <p>Are You sure you want to delete?</p>
+
+
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" style="width:100%" (click)="deleteBook()">Yes</button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
