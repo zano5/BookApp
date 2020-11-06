@@ -89,7 +89,7 @@
     </div>
 
 
-    <div (click)="goBooks()" id="menuItem" >
+    <div (click)=" goContent()" id="menuItem" >
 
       View Content
 
@@ -97,7 +97,7 @@
     </div>
 
 
-    <div (click)="goBooks()" id="menuItem" >
+    <div (click)="goWallet()" id="menuItem" >
 
      Withdraw Funds
 
@@ -118,42 +118,87 @@
   <div class="content">
       <span id="clickable">
 
-        <h3 style="margin-top:50px;">Profile Information</h3>
+        <h3 style="margin-left:20px; margin-top:50px;">Profile Information</h3>
 
-        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
+        <div class="row">
+
+
+        
+        <div class="col-md-4" >
           <label for="inputAddress">Name</label>
           <input type="text" class="form-control"  placeholder="Name"  [(ngModel)]="teacher.name">
         </div>
 
 
-        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
-          <label for="inputAddress">Name</label>
-          <input type="text" class="form-control"  placeholder="Name"  [(ngModel)]="teacher.name">
+     
+        <div class="col-md-4" >
+          <label for="inputAddress">Bank Name</label>
+          <input type="text" class="form-control"  placeholder="Bank Name"  [(ngModel)]="teacher.bankName">
         </div>
-
-
-        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
-          <label for="inputAddress">Contact Number</label>
-          <input type="number" class="form-control"  placeholder="Contact Number"  [(ngModel)]="teacher.contact" >
         </div>
+      
 
 
-        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
+        <div class="row">
+
+
+
+            <div class=" col-md-4" >
+              <label for="inputAddress">Contact Number</label>
+              <input type="number" class="form-control"  placeholder="Contact Number"  [(ngModel)]="teacher.contact" >
+            </div>
+          
+
+
+              <div class="col-md-4" >
+                <label for="inputAddress">Bank Swift Code</label>
+                <input type="text" class="form-control"  placeholder="Bank Swift Code"  [(ngModel)]="teacher.bankSwiftCode" >
+              </div>
+
+            </div>
+
+        
+
+      
+            <div class="row">
+
+
+           
+    
+               
+        <div class="col-md-4" >
           <label for="inputAddress">Email</label>
           <input type="text" class="form-control"  placeholder="Email" [(ngModel)]="teacher.email"  >
         </div>
 
+    
+    
+               
+        <div class="col-md-4" >
+          <label for="inputAddress">Bank Account</label>
+          <input type="text" class="form-control"  placeholder="Bank Account" [(ngModel)]="teacher.bankAccount"  >
+        </div>
+    
+            
+    
+                </div>
 
-        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
+       
+
+
+
+                <div class="row">
+        <div class="col-md-4" >
           <label for="inputAddress">Password</label>
           <input type="text" class="form-control"  placeholder="Password"   [(ngModel)]="teacher.password"  >
         </div>
+      </div>
 
-
-
-        <div class="form-group col-md-3" style="margin-left:auto; margin-right:auto;">
+      <div class="row">
+        <div class="col-md-4" style="margin-top: 10px; ">
         <button class="btn  btn-primary  btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" (click)="updateTeacher()">Update</button>
     </div>
+  </div>
       </span>
   </div>
   <div>

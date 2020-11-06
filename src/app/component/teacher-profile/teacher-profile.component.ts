@@ -52,6 +52,18 @@ export class TeacherProfileComponent implements OnInit {
 
   }
 
+
+  goWallet(){
+
+    this.router.navigateByUrl('teacher-wallet');
+  }
+
+
+  goContent(){
+
+    this.router.navigateByUrl('teacher-content');
+  }
+
   signOut(){
 
     this.router.navigateByUrl('signIn')

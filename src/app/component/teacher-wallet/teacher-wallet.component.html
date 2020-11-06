@@ -1,0 +1,86 @@
+
+<nav class="navbar navbar-light bg-light" style="margin-top:10px; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+transition: 0.3s;
+border-radius: 5px;">
+
+<button (click)= "back()"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+  </svg></button>
+
+<a class="navbar-brand"></a>
+<form class="form-inline">
+
+    <button type="button"  data-toggle="modal" data-target="#addModal" style=" background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;">
+      Withdraw
+      </button>
+</form>
+    
+  </nav>
+
+
+  <div id="item" >
+
+
+    <h1 style="text-align: center;">Amount</h1>
+    <h3 id="value">3000</h3>
+
+
+  </div>
+
+
+  <!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Amount To Withdraw</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="form-group" id="item_style">
+            <label for="exampleInputEmail1">Amount</label>
+            <input type="text" class="form-control"  placeholder="Amount" [(ngModel)]="book.name">
+          </div>
+  
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addBook()">Withdraw</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md-2" >
+  <div style="height: 50px; width: 5px; background-color: green; margin-left: 5px; margin-top: 5px;" >
+     </div>
+    </div>
+
+    
+     <div class="col-md-4" >
+       <p style="margin-top: 20px;"> 500 successfully deposited to your wallet</p>
+ </div>
+</div>
+
+
+  
+<div class="row">
+    <div class="col-md-2" >
+  <div style="height: 50px; width: 5px; background-color: red; margin-left: 5px; margin-top: 5px;" >
+     </div>
+    </div>
+
+    
+     <div class="col-md-4" >
+       <p style="margin-top: 20px;"> 300 successfully withdrawn from your wallet</p>
+ </div>
+</div>
+  
+  

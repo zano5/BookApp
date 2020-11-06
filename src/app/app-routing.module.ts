@@ -28,6 +28,8 @@ import { HSafetyComponent } from './component/h-safety/h-safety.component';
 import { SearchComponent } from './component/search/search.component';
 import { NLSearchComponent } from './component/n-lsearch/n-lsearch.component';
 import { ResetWEmailComponent } from './component/reset-wemail/reset-wemail.component';
+import { TeacherWalletComponent } from './component/teacher-wallet/teacher-wallet.component';
+import { TeacherContentComponent } from './component/teacher-content/teacher-content.component';
 
 const routes: Routes = [
 {path: '', component: MenuComponent, children: [
@@ -70,7 +72,9 @@ const routes: Routes = [
 {path: 'teacher', component: TeacherComponent},
 {path: 'teacher-profile', component: TeacherProfileComponent},
 {path: 'teacher-books', component: TeacherBooksComponent},
-{path: 'teacher-history', component: TeacherHistoryComponent}
+{path: 'teacher-history', component: TeacherHistoryComponent},
+{path: 'teacher-wallet', component: TeacherWalletComponent},
+{path: 'teacher-content', component: TeacherContentComponent}
 
 
 

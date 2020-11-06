@@ -41,6 +41,8 @@ import { AddTeacherComponent } from './admin/add-teacher/add-teacher.component';
 import { TeacherProfileComponent } from './component/teacher-profile/teacher-profile.component';
 import { TeacherBooksComponent } from './component/teacher-books/teacher-books.component';
 import { TeacherHistoryComponent } from './component/teacher-history/teacher-history.component';
+import { TeacherWalletComponent } from './component/teacher-wallet/teacher-wallet.component';
+import { TeacherContentComponent } from './component/teacher-content/teacher-content.component';
 
 
 
@@ -89,7 +91,9 @@ const firebaseConfig = {
     AddTeacherComponent,
     TeacherProfileComponent,
     TeacherBooksComponent,
-    TeacherHistoryComponent
+    TeacherHistoryComponent,
+    TeacherWalletComponent,
+    TeacherContentComponent
   ],
   imports: [
     BrowserModule,
