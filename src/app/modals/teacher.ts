@@ -8,5 +8,6 @@ class Teacher{
   contact: string;
   email: string;
   description: string;
+  amount: number;
 
 }

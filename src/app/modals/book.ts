@@ -3,16 +3,18 @@ class Book {
   name: string;
   isbn: number;
   description: string;
-  department: string;
+  department?: string;
   price: number;
   status: string;
-  studentNo: string;
+  studentNo?: string;
+  employeeNumber?: string;
   url: string;
   pending: string;
-  reservedBy: string;
-  reserved: string;
   pubDate: string;
   author: string;
+  type: string;
+  specialization?: string;
+  course?: string;
 
 
 

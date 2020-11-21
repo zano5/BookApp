@@ -27,27 +27,7 @@ export class MyBooksComponent implements OnInit {
 
   image;
 
-  book = {
-    name: '',
-    pubDate: '',
-    author: '',
-    description: '',
-    specialization: '',
-    price: 0,
-    status: '',
-    studentNo:  0,
-    url: '',
-    course: '',
-    reserved: '',
-    reservedBy: '',
-    isbn: ''
-
-
-
-
-
-  };
-
+  book = {} as Book;
   specializationList = [];
 
   profile;
@@ -121,6 +101,9 @@ export class MyBooksComponent implements OnInit {
 
       });
 
+
+      console.log('specialization',this.specialList);
+
     });
 
 
@@ -168,9 +151,9 @@ export class MyBooksComponent implements OnInit {
   addBook() {
 
     this.book.specialization = this.specialization;
+    this.book.type= 'student';
     this.book.course = this.course;
     this.book.studentNo = this.student[0].studentNo;
-    this.book.status = 'pending';
     this.uploadProgress =  this.addBookService.uploadBookImage(this.event, this.book);
 
   }
@@ -179,6 +162,8 @@ export class MyBooksComponent implements OnInit {
   update(book) {
 
     this.book = book;
+    this.specialization = book.specialization;
+    this.course = book.course;
 
     this.studentService.getStudent().subscribe(data => {
 
@@ -220,12 +205,6 @@ export class MyBooksComponent implements OnInit {
 
     this.book.specialization = this.specialization;
     this.book.course = this.course;
-    if (this.book.reserved === 'no') {
-
-      this.book.reservedBy = '';
-
-    }
-
 
     this.addBookService.updateBook(this.book);
   }

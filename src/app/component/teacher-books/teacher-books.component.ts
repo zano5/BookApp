@@ -15,7 +15,7 @@ import { map, switchMap } from 'rxjs/operators'
 })
 export class TeacherBooksComponent implements OnInit {
 
-  book = {} as TeacherBook;
+  book = {} as Book;
   student = {} as Student;
   specializationList =[];
   courseList = [];
@@ -23,6 +23,7 @@ export class TeacherBooksComponent implements OnInit {
   bookList = [];
   specialization;
 
+  bookItem = {} as Book;
 
   uploadProgress;
   booksList = [];
@@ -51,12 +52,7 @@ export class TeacherBooksComponent implements OnInit {
     )
 
 
-
-
-
   }
-
-
 
 
   upload(event) {
@@ -66,21 +62,12 @@ export class TeacherBooksComponent implements OnInit {
   }
 
 
-  updateBook(event) {
-
-
-
-  }
-
   addBook() {
-
-   // this.bookDao.addTeacherBook(this.book);
-
-
 
    this.book.specialization = this.specialization;
    this.book.course = this.course;
    this.book.employeeNumber = this.teacherDao.getTeacher().employeeNumber;
+   this.book.type = 'teacher';
   this.uploadProgress =  this.bookDao.uploadTeacherBook(this.event, this.book);
 
 
@@ -89,16 +76,12 @@ export class TeacherBooksComponent implements OnInit {
   }
 
 
-  update() {
+  update(book){
 
+    this.bookItem = book;
+    this.specialization = book.specialization;
+    this.course = book.course;
   }
-
-
-  deleteBook() {
-
-  }
-
-
 
   back() {
 
@@ -108,8 +91,7 @@ export class TeacherBooksComponent implements OnInit {
 
   getTeacherBooks() {
 
-
-    this.bookDao.getTeacherBook(this.teacherDao.getTeacher()).subscribe(data => {
+    this.bookDao.getTeacherBooksByEM(this.teacherDao.getTeacher().employeeNumber).subscribe(data => {
 
 
       this.booksList = data.map(e => {
@@ -117,8 +99,8 @@ export class TeacherBooksComponent implements OnInit {
 
         return{
           key: e.payload.doc.id,
-          ...e.payload.doc.data() as TeacherBook
-        } as TeacherBook;
+          ...e.payload.doc.data() as Book
+        } as Book;
 
       });
 
@@ -126,5 +108,22 @@ export class TeacherBooksComponent implements OnInit {
 
 
   }
+
+
+  updateBook(){
+
+    this.bookDao.updateBook(this.bookItem);
+
+  }
+
+
+  deleteBook(){
+
+    this.bookDao.deleteBook(this.bookItem);
+
+  }
+
+
+
 
 }

@@ -19,9 +19,8 @@ border-radius: 5px;">
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Book name</th>
-      <th scope="col">Book ISBN</th>
-      <th scope="col">Book Price</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
       <th scope="col">Buyer</th>
 
     </tr>
@@ -29,10 +28,10 @@ border-radius: 5px;">
   <tbody>
     <tr  data-toggle="modal" data-target="#updateModal" *ngFor="let purchase of purchaseList">
 
-      <td>{{purchase.Bookname}}</td>
-      <td>{{purchase.Bookisbn}}</td>
-      <td>{{purchase.BookPrice}}</td>
-      <td>{{purchase.buyer}}</td>
+      <td>{{purchase.name}}</td>
+      <td>{{purchase.price}}</td>
+      <td *ngIf="purchase.buyerStudent !=null">{{purchase?.buyerStudent}}</td>
+      <td *ngIf="purchase.buyerEmployee !=null">{{purchase?.buyerEmployee}}</td>
 
 
 

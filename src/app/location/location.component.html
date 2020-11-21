@@ -1,0 +1,72 @@
+
+<nav class="navbar navbar-primary bg-primary navbar-custom">
+  <button type="button"   style=" background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;" (click)="back()">
+          Back
+    </button>
+
+
+</nav>
+
+
+<div class="content">
+  <span id="clickable">
+
+    <h3 style="margin-left:20px; margin-top:50px;">Delivery Location</h3>
+
+    <div class="row"  style="margin-left:20px;">
+
+
+
+    <div class="col-md-4" >
+      <label for="inputAddress">Search</label>
+      <input type="text" class="form-control"  (input)="search($event)" (change)="addressCheck($event)"   [(ngModel)]="address.location"  [value]="selectedAddress">
+    </div>
+    <div *ngFor="let address of addresses ; let i=index" (click)="onSelect(address, i)" >
+
+      <ul class="list-group">
+        <li class="list-group-item">{{ address}}</li>
+        <br>
+      </ul>
+  </div>
+
+
+
+
+    <div class="col-md-4" >
+      <label for="inputAddress">Complex</label>
+      <input type="text" class="form-control"    [(ngModel)]="address.complex">
+    </div>
+    </div>
+
+
+<div class="row" style="margin-left:20px;">
+
+    <div class="col-md-4" >
+      <label for="inputAddress">Unit</label>
+      <input type="text" class="form-control"   [(ngModel)]="address.unit">
+    </div>
+
+
+
+    <div class="col-md-4" >
+      <label for="inputAddress">Description</label>
+      <input type="text" class="form-control"   [(ngModel)]="address.description">
+    </div>
+
+
+
+
+
+
+</div>
+
+
+<div class="row" style="margin-left:20px;">
+  <div class="col-md-4" style="margin-top: 10px; ">
+  <button class="btn  btn-primary  btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" (click)="submit()">Submit</button>
+</div>

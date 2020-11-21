@@ -18,6 +18,7 @@ export class TeacherProfileComponent implements OnInit {
 
     this.teacher = this.teacherDao.getTeacher();
 
+
     console.log(this.teacher);
   }
 

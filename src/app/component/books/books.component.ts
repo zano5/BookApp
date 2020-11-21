@@ -1,9 +1,11 @@
+import { CartService } from './../../service/cart.service';
 import { AdminStudentService } from 'src/app/service/admin-student.service';
 import { AddBookService } from './../../service/add-book.service';
 import { Component, OnInit } from '@angular/core';
 import { async } from 'q';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/service/user.service';
+import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
 
 @Component({
   selector: 'app-books',
@@ -27,6 +29,8 @@ export class BooksComponent implements OnInit {
 
   bookName = '';
 
+  type = 'admin';
+
   studentList = [];
 
   profile = {
@@ -37,47 +41,11 @@ export class BooksComponent implements OnInit {
   profileUser = [];
 
   // tslint:disable-next-line:max-line-length
-  constructor(private addService: AddBookService, private router: Router, private  studentService: AdminStudentService, private userDao: UserService) {
+  constructor(private bookDao: AddBookService, private router: Router, private  studentService: AdminStudentService, private userDao: UserService, private cartDao: CartService) {
 
     this.profileUser = this.userDao.getStudent();
     this.bookArryList = [];
-
-    this.addService.getBooks().subscribe(data => {
-
-      this.bookList =  data.map( e => {
-
-
-
-
-
-        return{
-          key: e.payload.doc.id,
-          ...e.payload.doc.data() as Book
-        } as Book;
-
-
-
-
-
-      });
-
-
-
-
-
-      for (const book of this.bookList) {
-
-       book.url =  this.getImage(book.url);
-       this.bookArryList.push(book);
-
-
-    }
-
-
-    });
-
-
-
+    this.getBookByType(this.type);
 
 
 
@@ -90,13 +58,17 @@ export class BooksComponent implements OnInit {
 
 
   ngOnInit() {
+
+
+
+
   }
 
 
   getImage(image) {
 
 
-     return this.addService.retreiveImage(image);
+     return this.bookDao.retreiveImage(image);
 
 
   }
@@ -164,54 +136,128 @@ export class BooksComponent implements OnInit {
   }
 
 
-  reserve(bookItem) {
 
-    console.log(bookItem);
 
-    if (this.profileUser[0].studentNo === '') {
 
-      alert('Session Timed Out! Relogin to System');
 
-    } else {
 
-      bookItem.reserved = 'yes';
-      bookItem.reservedBy = this.profileUser[0].studentNo;
-      console.log(bookItem.key);
 
-      this.addService.reserveBook(bookItem);
+  getBookByType(type){
 
-      this.bookArryList = [];
-    }
+
+if(type != "admin"){
+
+
+    this.bookDao.getByTypeBooks(this.type).subscribe(data =>{
+
+
+      this.bookArryList = data.map(e =>{
+
+        let object = e.payload.doc.data() as Book;
+
+        return{
+
+          key: e.payload.doc.id,
+          downloadUrl:  this.getImage(object.url),
+          ...e.payload.doc.data() as Book
+        } as Book
+      })
+
+
+      console.log('BookList', this.bookArryList)
+
+    })
+
+  }else{
+
+    this.bookDao.getAllBooks().subscribe(data =>{
+
+
+      this.bookArryList = data.map(e =>{
+
+        let object = e.payload.doc.data() as Book;
+
+        return{
+
+          key: e.payload.doc.id,
+          downloadUrl:  this.getImage(object.url),
+          ...e.payload.doc.data() as Book
+        } as Book
+      })
+
+
+      console.log('BookList', this.bookArryList)
+
+    })
+
 
   }
 
-  cancelReserve(bookItem) {
-
-    if (this.profileUser[0].studentNo === '') {
-
-      alert('Session Timed Out! Relogin to System');
-
-    } else {
+  }
 
 
-      if (bookItem.reservedBy === this.profileUser[0].studentNo) {
+  clickStudent(){
 
-      bookItem.reserved = 'no';
-      bookItem.reservedBy = '';
-      console.log(this.profileUser[0].studentNo);
-
+    this.type ="student";
+    this.getBookByType(this.type);
 
 
-      this.addService.cancelReserve(bookItem);
-
-      this.bookArryList = [];
-      } else {
-        alert('You are unable to cancel book reservation!');
-      }
-
-    }
 
   }
+
+
+
+  clickTeacher(){
+
+    this.type ="teacher";
+    this.getBookByType(this.type);
+
+
+
+  }
+
+
+  addToCart(book){
+
+
+    this.cartDao.addToCart(book);
+    console.log(book);
+
+
+
+
+
+    console.log("cart list", this.cartDao.getCart());
+
+
+    alert("Item Added To Cart");
+
+
+
+  }
+
+
+  clickAdmin(){
+
+
+    this.type ="admin";
+    this.getBookByType(this.type);
+
+  }
+
+
+  goContent(){
+
+    this.router.navigateByUrl("content");
+  }
+
+
+
+
+
+
+
+
 
 
 

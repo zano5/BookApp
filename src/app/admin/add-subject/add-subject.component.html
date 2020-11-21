@@ -25,7 +25,7 @@ border-radius: 5px;">
       <tr>
         <th scope="col">Subject ID</th>
         <th scope="col">Subject Name</th>
-      
+
       </tr>
     </thead>
     <tbody>
@@ -33,11 +33,11 @@ border-radius: 5px;">
 
         <td>{{subject.subjectID}}</td>
         <td>{{subject.subjectName}}</td>
-     
 
-        
-     
-       
+
+
+
+
       </tr>
 
 
@@ -69,7 +69,7 @@ border-radius: 5px;">
         <input type="string" class="form-control"  placeholder="Subject ID"  [(ngModel)]="subject.subjectID">
       </div>
 
-     
+
       <div class="form-group">
         <label for="exampleInputSubject" id="item_style">Subject Name</label>
         <input type="string" class="form-control"  placeholder="Subject Name"  [(ngModel)]="subject.subjectName">
@@ -82,7 +82,7 @@ border-radius: 5px;">
       </div>
 
       <div>
-      
+
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -93,10 +93,6 @@ border-radius: 5px;">
         <input type="text" class="form-control"  placeholder="Name" [(ngModel)]="subject.bookName">
       </div>
 
-      <div class="form-group" id="item_style">
-        <label for="exampleInputPassword1">ISBN</label>
-        <input type="number" class="form-control"  placeholder="ISBN Number"   maxlength="20" [(ngModel)]="subject.bookIsbn">
-      </div>
 
 
       <div class="form-group" id="item_style">
@@ -147,78 +143,78 @@ border-radius: 5px;">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
           <div class="form-group">
             <label for="exampleInputSubject" id="item_style">Subject ID</label>
             <input type="string" class="form-control"  placeholder="Subject ID"  [(ngModel)]="subject.subjectID">
           </div>
-    
-         
+
+
           <div class="form-group">
             <label for="exampleInputSubject" id="item_style">Subject Name</label>
             <input type="string" class="form-control"  placeholder="Subject Name"  [(ngModel)]="subject.subjectName">
           </div>
-    
-    
+
+
           <div class="form-group" id="item_style">
             <label for="exampleInputPassword1">ISBN</label>
             <input type="number" class="form-control"  placeholder="ISBN" [(ngModel)]="subject.bookIsbn">
           </div>
-    
+
           <div>
-          
+
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-    
+
         <div class="form-group" id="item_style">
             <label for="exampleInputEmail1">Book Name</label>
             <input type="text" class="form-control"  placeholder="Name" [(ngModel)]="subject.bookName">
           </div>
-    
+
           <div class="form-group" id="item_style">
             <label for="exampleInputPassword1">ISBN</label>
             <input type="number" class="form-control"  placeholder="ISBN Number"   maxlength="20" [(ngModel)]="subject.bookIsbn">
           </div>
-    
-    
+
+
           <div class="form-group" id="item_style">
             <label for="exampleInputPassword1">Publisher Date</label>
             <input type="date" class="form-control"  placeholder="Publisher Date" [(ngModel)]="subject.bookPubDate">
           </div>
-    
-    
-    
+
+
+
           <div class="form-group" id="item_style">
             <label for="exampleInputPassword1">Author</label>
             <input type="text" class="form-control"  placeholder="Author" [(ngModel)]="subject.bookAuthor">
           </div>
-    
-    
-    
+
+
+
           <div class="form-group" id="item_style">
             <label for="exampleInputPassword1">Description</label>
             <input type="text" class="form-control"  placeholder="description" [(ngModel)]="subject.bookDescription">
           </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
           <div class="modal-footer">
-    
+
               <button type="button" class="btn btn-danger"  style="width:100%"    data-toggle="modal" data-target="#deleteModal" >Delete</button>
-            <button type="button" class="btn btn-primary" style="width:100%" (click)="addSubject()">update</button>
+            <button type="button" class="btn btn-primary" style="width:100%"  (click)="updateSubject()">update</button>
           </div>
         </div>
       </div>
@@ -256,8 +252,8 @@ border-radius: 5px;">
 
 
 
-  
-  
+
+
 
 
 

@@ -6,4 +6,6 @@ class ContentItem{
     price: number;
     videoUrl: string;
     fileUrl: string;
+    employeeNumber:string;
+    type: string;
 }

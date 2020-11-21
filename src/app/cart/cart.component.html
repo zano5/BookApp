@@ -1,0 +1,58 @@
+
+<nav class="navbar navbar-primary bg-primary navbar-custom">
+  <button type="button"   style=" background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;" (click)="back()">
+          Back
+    </button>
+
+
+</nav>
+
+
+<h3 style="text-align: center">Total Amount: {{totAmount}} </h3>
+
+<div class="card_content">
+
+  <div class="form-row">
+
+
+<div *ngFor="let cart of carList">
+  <div class="form-group col-md-4" >
+
+
+
+
+
+
+
+
+
+
+
+          <div class="card" style="width: 18rem;">
+              <img [attr.src]="cart.downloadUrl | async" class="card-img-top" alt="..." style="height:300px" *ngIf="cart.downloadUrl">
+              <div class="card-body">
+                <h5 class="card-title">{{cart.name}}</h5>
+                <p class="card-text">Price:R {{cart.price}}</p>
+
+
+
+                <button (click)="remove(cart)"> Remove From Cart</button>
+
+              </div>
+            </div>
+
+            </div>
+
+          </div>
+
+          </div>
+
+          </div>
+
+
+<button type="button" class="btn btn-outline-dark" style="margin-top: 10px; margin-left: 10px;" (click)="goLocation()">Check Out</button>

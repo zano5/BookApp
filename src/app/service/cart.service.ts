@@ -8,6 +8,8 @@ export class CartService {
 
 
   cartList = [];
+  address;
+  totAmount;
 
   constructor(private cartDAO: CartService) {
 
@@ -15,6 +17,18 @@ export class CartService {
 
    }
 
+
+   addAddress(address) {
+
+
+    this.address = address;
+
+   }
+
+   getAddress(){
+
+    return this.address;
+   }
 
 
    addToCart(book) {
@@ -25,11 +39,30 @@ export class CartService {
    }
 
 
-   removeFromCart() {
 
 
-   // this.
 
+   getCart(){
+
+    return this.cartList;
    }
+
+
+   setTotalAmount(amount){
+     this.totAmount = amount;
+   }
+
+   getTotalAmount(){
+
+    return this.totAmount;
+   }
+
+
+   removeFromCart( value) {
+    var idx = this.cartList.indexOf(value);
+    if (idx !== -1) {
+      this.cartList.splice(idx, 1);
+    }
+  }
 
 }

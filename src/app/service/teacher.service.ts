@@ -44,20 +44,14 @@ export class TeacherService {
   updateTeacher(teacher){
 
 
-    this.asf.collection('Teachers').doc('TUT'+ teacher.employeeNumber).update(teacher).then(() => {
+    this.asf.collection('Teachers').doc('TUT'+ teacher.employeeNumber).update(teacher);
 
 
-      alert('Details Updated');
+  }
 
-    }).catch(err => {
+  updateTheTeacher(teacher){
 
-
-
-
-
-    })
-
-
+    this.asf.collection('Teachers').doc(teacher.key).update(teacher);
   }
 
 
@@ -86,5 +80,11 @@ export class TeacherService {
   }
 
 
- 
+  getTeacherByEmployeeNumber(employeeNumber){
+
+    return this.asf.collection('Teachers', ref=> ref.where('employeeNumber','==', employeeNumber)).snapshotChanges();
+  }
+
+
+
 }

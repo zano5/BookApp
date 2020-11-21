@@ -56,8 +56,8 @@ export class AddSubjectComponent implements OnInit {
 
         return{
             key: e.payload.doc.id,
-            ...e.payload.doc.data() as Subject
-        } as Subject;
+            ...e.payload.doc.data()
+        } as Subject
 
 
       });
@@ -108,7 +108,7 @@ export class AddSubjectComponent implements OnInit {
     } else if (this.subject.bookPubDate === '') {
 
       alert('Enter Book Publish Date');
-    } else if (this.subject.bookDescription) {
+    } else if (this.subject.bookDescription ==='' ) {
 
       alert('Enter Book Description');
     } else {
@@ -154,9 +154,9 @@ export class AddSubjectComponent implements OnInit {
   }
 
 
-  updateSubject(subject) {
+  updateSubject() {
 
-    this.subjectService.updateSubject(subject);
+    this.subjectService.updateSubject(this.subject);
   }
 
 }

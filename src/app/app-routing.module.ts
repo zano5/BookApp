@@ -1,3 +1,10 @@
+import { StudentHistoryComponent } from './component/student-history/student-history.component';
+
+
+import { PaymentDetailsComponent } from './payment-details/payment-details.component';
+import { AdminBookComponent } from './admin/admin-book/admin-book.component';
+import { CartComponent } from './cart/cart.component';
+import { LocationComponent } from './location/location.component';
 import { TeacherHistoryComponent } from './component/teacher-history/teacher-history.component';
 import { TeacherBooksComponent } from './component/teacher-books/teacher-books.component';
 import { TeacherProfileComponent } from './component/teacher-profile/teacher-profile.component';
@@ -30,6 +37,7 @@ import { NLSearchComponent } from './component/n-lsearch/n-lsearch.component';
 import { ResetWEmailComponent } from './component/reset-wemail/reset-wemail.component';
 import { TeacherWalletComponent } from './component/teacher-wallet/teacher-wallet.component';
 import { TeacherContentComponent } from './component/teacher-content/teacher-content.component';
+import { ContentComponent } from './component/content/content.component';
 
 const routes: Routes = [
 {path: '', component: MenuComponent, children: [
@@ -46,7 +54,8 @@ const routes: Routes = [
 
   {path: 'books', component: BooksComponent},
   {path: 'myBooks', component: MyBooksComponent},
-  {path: 'profile', component: ProfileComponent}
+  {path: 'profile', component: ProfileComponent},
+  {path:'student-history', component: StudentHistoryComponent}
 
 ]
 
@@ -74,7 +83,13 @@ const routes: Routes = [
 {path: 'teacher-books', component: TeacherBooksComponent},
 {path: 'teacher-history', component: TeacherHistoryComponent},
 {path: 'teacher-wallet', component: TeacherWalletComponent},
-{path: 'teacher-content', component: TeacherContentComponent}
+{path: 'teacher-content', component: TeacherContentComponent},
+{path: 'cart', component: CartComponent},
+{path: 'admin-book', component: AdminBookComponent},
+{path: 'location', component: LocationComponent},
+{path: 'payment-detail', component: PaymentDetailsComponent},
+{path: 'content', component: ContentComponent}
+
 
 
 

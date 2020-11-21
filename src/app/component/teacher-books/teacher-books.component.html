@@ -134,12 +134,12 @@ border-radius: 5px;">
         </div>
       <div class="form-group">
           <label for="exampleInputEmail1" id="item_style">Book Name</label>
-          <input type="text" class="form-control"  placeholder="Name" [(ngModel)]="book.name">
+          <input type="text" class="form-control"  placeholder="Name" [(ngModel)]="bookItem.name">
         </div>
 
         <div class="form-group" id="item_style">
           <label for="exampleInputPassword1">ISBN</label>
-          <input type="number" class="form-control"  placeholder="ISBN Number" maxlength="20" [(ngModel)]="book.isbn">
+          <input type="number" class="form-control"  placeholder="ISBN Number" maxlength="20" [(ngModel)]="bookItem.isbn">
         </div>
 
 
@@ -147,42 +147,38 @@ border-radius: 5px;">
 
         <div class="form-group" id="item_style">
           <label for="exampleInputPassword1">Description</label>
-          <input type="text" class="form-control"  placeholder="description" [(ngModel)]="book.description">
+          <input type="text" class="form-control"  placeholder="description" [(ngModel)]="bookItem.description">
         </div>
 
 
-        <div class="form-group" id="item_style">
-            <label for="exampleInputPassword1">Pending</label>
-            <input type="text" class="form-control"  placeholder="Status" [(ngModel)]="book.status">
-          </div>
 
 
 
 
-
+        <ng-container *ngIf="all$ | async; else loading; let all">
           <label for="inputState" id="item_style">Course</label>
           <select id="inputState" class="form-control"  [(ngModel)]="course">
-          <option selected value="{{course.name}}" *ngFor="let course of courseList">{{course.name}}</option>
+          <option selected value="{{course.name}}" *ngFor="let course of all.courses">{{bookItem.course}}</option>
 
           </select>
 
 
         <label for="inputState" id="item_style"  >Specialization</label>
-        <select id="inputState" class="form-control" [(ngModel)]="student.specialization"[(ngModel)]="specialization" >
-        <option selected value="{{special.name}}" *ngFor="let special of specializationList">{{special.name}}</option>
+        <select id="inputState" class="form-control" [(ngModel)]="specialization"[(ngModel)]="specialization" >
+        <option selected value="{{special.name}}" *ngFor="let special of all.specializations">{{special.name}}</option>
 
         </select>
 
-
+</ng-container>
 
         <div class="form-group" id="item_style">
             <label for="exampleInputPassword1">Price</label>
-            <input type="number" class="form-control"  placeholder="price" [(ngModel)]="book.price">
+            <input type="number" class="form-control"  placeholder="Price" [(ngModel)]="bookItem.price">
           </div>
 
           <div class="form-group" id="item_style">
             <label for="exampleInputPassword1">Author</label>
-            <input type="number" class="form-control"  placeholder="price" [(ngModel)]="book.author">
+            <input type="text" class="form-control"  placeholder="Author" [(ngModel)]="bookItem.author">
           </div>
 
 
@@ -190,7 +186,7 @@ border-radius: 5px;">
 
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" style="width:100%" (click)="updateBook()">Update</button>
-        <button type="button" class="btn btn-danger" style="width:100%"  data-toggle="modal" data-target="#deleteModal">Delete</button>
+        <button type="button" class="btn btn-danger" style="width:100%"  data-toggle="modal" data-target="#deleteModal" >Delete</button>
 
       </div>
     </div>
@@ -208,7 +204,7 @@ border-radius: 5px;">
     </tr>
   </thead>
   <tbody>
-    <tr  data-toggle="modal" data-target="#updateModal" *ngFor="let book of booksList" (click)="update(book)" class="img-fluid animated fadeIn">
+    <tr  data-toggle="modal" data-target="#updateModal" *ngFor="let book of booksList" (click)="update(book)" class="img-fluid animated fadeIn" >
 
       <td>{{book.name}}</td>
       <td>{{book.isbn}}</td>

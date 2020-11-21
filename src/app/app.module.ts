@@ -43,6 +43,15 @@ import { TeacherBooksComponent } from './component/teacher-books/teacher-books.c
 import { TeacherHistoryComponent } from './component/teacher-history/teacher-history.component';
 import { TeacherWalletComponent } from './component/teacher-wallet/teacher-wallet.component';
 import { TeacherContentComponent } from './component/teacher-content/teacher-content.component';
+import { CartComponent } from './cart/cart.component';
+import { PaymentGateWayComponent } from './payment-gate-way/payment-gate-way.component';
+import { AdminBookComponent } from './admin/admin-book/admin-book.component';
+import { LocationComponent } from './location/location.component';
+import {HttpClientModule} from '@angular/common/http';
+import { PaymentDetailsComponent } from './payment-details/payment-details.component';
+import { ContentComponent } from './component/content/content.component';
+import { StudentHistoryComponent } from './component/student-history/student-history.component';
+
 
 
 
@@ -93,7 +102,14 @@ const firebaseConfig = {
     TeacherBooksComponent,
     TeacherHistoryComponent,
     TeacherWalletComponent,
-    TeacherContentComponent
+    TeacherContentComponent,
+    CartComponent,
+    PaymentGateWayComponent,
+    AdminBookComponent,
+    LocationComponent,
+    PaymentDetailsComponent,
+    ContentComponent,
+    StudentHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +121,8 @@ const firebaseConfig = {
     AngularFireAuthModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

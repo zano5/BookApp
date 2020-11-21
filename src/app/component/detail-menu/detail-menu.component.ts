@@ -1,3 +1,5 @@
+import { PaymentHistoryService } from './../../service/payment-history.service';
+import { CartService } from './../../service/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,9 +10,33 @@ import { Router } from '@angular/router';
 })
 export class DetailMenuComponent implements OnInit {
 
-  constructor(private router: Router) { }
+    count;
+
+  constructor(private router: Router, private cartDao: CartService, private paymentDao: PaymentHistoryService) {
+
+
+    this.count = this.cartDao.getCart().length;
+
+
+   }
 
   ngOnInit() {
+
+
+    this.count = this.cartDao.getCart().length;
+  }
+
+
+  ngAfterViewInit(){
+
+    this.count = this.cartDao.getCart().length;
+
+  }
+
+
+  goToCart(){
+
+    this.router.navigateByUrl('cart');
   }
 
 

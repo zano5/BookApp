@@ -1,0 +1,136 @@
+
+
+
+<nav class="navbar navbar-primary bg-primary navbar-custom">
+  <button type="button"   style=" background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;" (click)="back()">
+          Back
+    </button>
+
+
+</nav>
+
+
+
+<div style="margin-left: 10px; margin-top: 10px;">
+<h6>Pay With:</h6>
+
+<div class="row">
+  <div class="col-sm">
+
+
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="wallet"  [checked]="wallet" (change)="onWallet()">
+      <label class="form-check-label" > <i>Wallet</i></label>
+    </div>
+
+  </div>
+  <div class="col-sm">
+
+
+
+    <div class="form-check" >
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="card" [checked]="card"  (change)="onCard()"  >
+      <label class="form-check-label" ><i>Card</i></label>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div *ngIf="card==true">
+
+
+
+
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12 col-md-4">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">
+                      Payment Details
+                  </h3>
+                  <div class="checkbox pull-right">
+                      <label>
+                          <input type="checkbox" />
+                          Remember
+                      </label>
+                  </div>
+              </div>
+              <div class="panel-body">
+                  <form role="form">
+                  <div class="form-group">
+                      <label for="cardNumber">
+                          CARD NUMBER</label>
+                      <div class="input-group">
+                          <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
+                              required autofocus />
+                          <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-xs-7 col-md-7">
+                          <div class="form-group">
+                              <label for="expityMonth">
+                                  EXPIRY DATE</label>
+                              <div class="col-xs-6 col-lg-6 pl-ziro">
+                                  <input type="text" class="form-control" id="expityMonth" placeholder="MM" required />
+                              </div>
+                              <div class="col-xs-6 col-lg-6 pl-ziro">
+                                  <input type="text" class="form-control" id="expityYear" placeholder="YY" required /></div>
+                          </div>
+                      </div>
+                      <div class="col-xs-5 col-md-5 pull-right">
+                          <div class="form-group">
+                              <label for="cvCode">
+                                  CV CODE</label>
+                              <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                          </div>
+                      </div>
+                  </div>
+                  </form>
+              </div>
+          </div>
+          <ul class="nav nav-pills nav-stacked">
+              <li class="active"><a href="#"><span class="badge pull-right"><span class="glyphicon glyphicon-usd"></span>4200</span> Final Payment</a>
+              </li>
+          </ul>
+          <br/>
+          <a  class="btn btn-success btn-lg btn-block" role="button">Pay</a>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+<div *ngIf="wallet==true">
+
+
+
+
+
+  <button class="btn btn-success   btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" (click)="walletPay()" style="margin-top: 10px;">Make Payment</button>
+
+
+</div>
+
+
+
+
+
+</div>
+

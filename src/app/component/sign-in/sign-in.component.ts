@@ -28,6 +28,7 @@ export class SignInComponent implements OnInit {
     password: ''
   };
 
+  type="student";
 
 
 
@@ -68,6 +69,7 @@ export class SignInComponent implements OnInit {
 
 
         this.UserDao.saveUser(this.userInfo);
+        console.log('User Info', this.userInfo);``
         this.router.navigateByUrl('detail-menu/books');
 
     } else {
@@ -145,11 +147,13 @@ console.log("teacher",data);
   onStudent(){
 
     this.teacher = false;
+    this.type= "student";
   }
 
 
   onTeacher(){
     this.student = false;
+    this.type ="teacher";
   }
 
   }

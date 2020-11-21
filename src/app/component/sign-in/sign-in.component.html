@@ -39,11 +39,17 @@
 
                 </div>
 
-                  <div class="form-group" style="margin-top: 10px;">
+                  <div class="form-group" style="margin-top: 10px;" *ngIf="type == 'student'">
                       <label for="inputEmail">Student Number</label>
                     <input type="number" id="inputEmail" class="form-control" placeholder="Student Number"  autofocus [(ngModel)]="user.studentNo" required>
 
                   </div>
+
+                  <div class="form-group" style="margin-top: 10px;" *ngIf="type == 'teacher'">
+                    <label for="inputEmail">Employee Number</label>
+                  <input type="number" id="inputEmail" class="form-control" placeholder="Employee Number"  autofocus [(ngModel)]="user.studentNo" required>
+
+                </div>
 
                   <div class="form-group">
                       <label for="inputPassword">Password</label>

@@ -1,6 +1,15 @@
 <body style="text-align: center">
 
+  <div id="item" >
 
+
+    <h1 style="text-align: center;">Amount</h1>
+    <h3 id="value">{{amount}}</h3>
+
+
+  </div>
+
+    <div style="max-width:500px; margin-left: auto; margin-right: auto; margin-top: 10px;">
           <div class="form-row">
             <div class="form-group col-md-12">
               <label for="inputEmail4">Name</label>
@@ -18,10 +27,14 @@
                 </div>
 
 
-                <div class="form-group col-md-12">
-                    <label for="inputAddress">Gender</label>
-                    <input type="text" class="form-control"  placeholder="Gender"   [(ngModel)]="profileUser[0].gender">
-                  </div>
+
+
+                  <label for="inputState" id="item_style"  >Gender</label>
+                  <select id="inputState" class="form-control"  [(ngModel)]="gender" >
+                  <option selected value="male" >Male</option>
+                  <option selected value="female" >Female</option>
+                  <option selected value="transgender" >Transgender</option>
+                </select>
 
 
 
@@ -41,17 +54,17 @@
 
 
           <button type="submit" class="btn btn-outline-dark"  style="width:100%"   data-toggle="modal" data-target="#viewModal" >View Subject</button>
-         
 
 
-      
 
-          
+
+
+
           <button type="submit" class="btn btn-primary"  style="width:100%"  (click)="updateStudent()">Update</button>
 
 
 
-
+        </div>
 
 
 
@@ -87,28 +100,28 @@
             </thead>
             <tbody>
               <tr   *ngFor="let subject of subjectList">
-          
-          
+
+
                    <td>{{subject.subjectID}}</td>
                 <td>{{subject.subjectName}}</td>
                 <td>{{subject.bookName}}</td>
                 <td>{{subject.bookAuthor}}</td>
                 <td>{{subject.bookIsbn}}</td>
-             
-          
-               
+
+
+
               </tr>
-          
-          
-          
+
+
+
             </tbody>
-        
+
             </table>
-      
-  
+
+
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          
+
         </div>
       </div>
     </div>

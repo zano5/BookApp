@@ -14,6 +14,7 @@ export class ProfileComponent implements OnInit {
 
   profileForm: FormGroup;
   profileUser = 0;
+  amount = 0;
 
   student = {
   key: '',
@@ -35,6 +36,8 @@ export class ProfileComponent implements OnInit {
 
   mySubjectList = [];
 
+  gender;
+
 
 
 
@@ -44,9 +47,13 @@ export class ProfileComponent implements OnInit {
 
    this.profileUser = this.userDao.getStudent();
 
+
+
    if (this.userDao.getStudent()) {
 
 
+    this.amount = this.profileUser[0].bookAmount;
+    this.gender  = this.profileUser[0].gender;
 
     this.subjectService.getSubjectByStudent(this.profileUser[0].studentNo).subscribe(data => {
 
@@ -116,6 +123,8 @@ export class ProfileComponent implements OnInit {
  updateStudent() {
 
   const student =  this.profileUser[0];
+
+  student.gender = this.gender;
 
   this.userDao.updateStudent(student);
 

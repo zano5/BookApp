@@ -341,6 +341,12 @@ goTeacher() {
 }
 
 
+addSBook(){
+
+  this.router.navigateByUrl("admin-book");
+}
+
+
 
 
 

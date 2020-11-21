@@ -1,0 +1,29 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col"></th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr  data-toggle="modal" data-target="#updateModal" *ngFor="let payment of paymentList"  class="img-fluid animated fadeIn">
+
+      <td>{{payment.name}}</td>
+      <td>{{payment.price}}</td>
+      <td *ngIf="payment.type=='content'"><button>Download Content</button></td>
+
+
+
+
+
+    </tr>
+
+
+
+
+  </tbody>
+</table>

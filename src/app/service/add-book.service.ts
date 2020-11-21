@@ -79,24 +79,36 @@ downloadURL;
 
   uploadBookImage(event, book) {
 
-     const bookName = this.makeid(10) + '.jpg';
-   // this.afs.upload('/upload/to/this-path', event.target.files[0]);
-
-  // const randomId = Math.random().toString(36).substring(2);
-     const file = event.target.files[0];
-     const filePath = 'uploads/books/' + bookName;
-     this.ref = this.afs.ref(filePath);
-
-     this.task = this.afs.upload(filePath, file);
-
-     book.url = bookName;
-
-     this.addBook(book);
+    if(event != null){
 
 
+      const bookName = this.makeid(10) + '.jpg';
+      // this.afs.upload('/upload/to/this-path', event.target.files[0]);
+
+     // const randomId = Math.random().toString(36).substring(2);
+        const file = event.target.files[0];
+        const filePath = 'uploads/books/' + bookName;
+        this.ref = this.afs.ref(filePath);
+
+        this.task = this.afs.upload(filePath, file);
+
+        book.url = bookName;
+
+        this.addBook(book);
 
 
-     return this.uploadProgress = this.task.percentageChanges();
+
+
+
+        return this.uploadProgress = this.task.percentageChanges();
+
+    }else{
+
+
+      alert("Add Image");
+    }
+
+
 
 
   }
@@ -248,9 +260,28 @@ getTeacherBook(teacher){
 }
 
 
+getByTypeBooks(type) {
 
 
+  return this.afd.collection('books', ref=> ref.where('type', '==', type )).snapshotChanges();
+}
 
+
+getAllBooks(){
+
+  return this.afd.collection('books').snapshotChanges();
+
+}
+
+
+getTeacherBooksByEM(employeeNumber){
+
+
+  return this.afd.collection("books", ref => ref.where('employeeNumber', '==', employeeNumber)).snapshotChanges();
 
 
 }
+
+
+}
+
