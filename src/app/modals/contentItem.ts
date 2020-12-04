@@ -8,4 +8,5 @@ class ContentItem{
     fileUrl: string;
     employeeNumber:string;
     type: string;
+    thumbnail: string;
 }

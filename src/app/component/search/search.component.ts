@@ -1,3 +1,4 @@
+import { CartService } from './../../service/cart.service';
 import { AdminStudentService } from './../../service/admin-student.service';
 import { UserService } from 'src/app/service/user.service';
 import { AddBookService } from './../../service/add-book.service';
@@ -29,7 +30,7 @@ export class SearchComponent implements OnInit {
   studentList;
   profileUser;
   // tslint:disable-next-line:max-line-length
-  constructor(private route: ActivatedRoute, private router: Router, private addBookService: AddBookService, private studentInfo: UserService, private studentService: AdminStudentService) {
+  constructor(private route: ActivatedRoute, private router: Router, private addBookService: AddBookService, private studentInfo: UserService, private studentService: AdminStudentService, private cartDao: CartService) {
 
 
 
@@ -42,8 +43,6 @@ export class SearchComponent implements OnInit {
     if (this.studentInfo.getStudent()) {
 
     this.student = this.studentInfo.getStudent()[0];
-
-
 
     console.log(this.student);
 
@@ -66,20 +65,10 @@ export class SearchComponent implements OnInit {
 
 
       this.bookList = data.map( e => {
-
-
-
-
-
         return{
           key: e.payload.doc.id,
           ...e.payload.doc.data() as Book
         } as Book;
-
-
-
-
-
 
       });
 
@@ -88,14 +77,9 @@ export class SearchComponent implements OnInit {
 
         book.url =  this.getImage(book.url);
         this.bookArryList.push(book);
-
-
     }
 
       console.log('BookList', this.bookArryList);
-
-
-
     });
 
 
@@ -126,14 +110,7 @@ export class SearchComponent implements OnInit {
 
   getImage(image) {
 
-
-
-
-
-
     return this.addBookService.retreiveImage(image);
-
-
  }
 
 
@@ -162,11 +139,6 @@ export class SearchComponent implements OnInit {
 
       this.profile.contact = stud.contact;
       this.profile.studentNo = stud.studentNo;
-
-
-
-
-
     } else {
 
       this.profile.contact = '';
@@ -212,16 +184,11 @@ cancelReserve(bookItem) {
     alert('Session Timed Out! Relogin to System');
 
   } else {
-
-
     if (bookItem.reservedBy === this.profileUser[0].studentNo) {
 
     bookItem.reserved = 'no';
     bookItem.reservedBy = '';
     console.log(this.profileUser[0].studentNo);
-
-
-
     this.addBookService.cancelReserve(bookItem);
 
     this.bookArryList = [];
@@ -233,5 +200,13 @@ cancelReserve(bookItem) {
 
 }
 
+
+addToCart(book){
+  this.cartDao.addToCart(book);
+  console.log(book);
+  console.log("cart list", this.cartDao.getCart())
+  alert("Item Added To Cart");
+
+}
 
 }

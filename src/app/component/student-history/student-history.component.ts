@@ -1,6 +1,8 @@
 import { PaymentHistoryService } from './../../service/payment-history.service';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/service/user.service';
+import { AngularFireStorage } from '@angular/fire/storage';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-student-history',
@@ -14,7 +16,7 @@ export class StudentHistoryComponent implements OnInit {
   profileUser;
   student;
 
-  constructor(private paymentDao: PaymentHistoryService, private studentDao: UserService) {
+  constructor(private paymentDao: PaymentHistoryService, private studentDao: UserService, private storage: AngularFireStorage) {
 
 
     this.profileUser = this.studentDao.getStudent();
@@ -53,7 +55,7 @@ export class StudentHistoryComponent implements OnInit {
             this.paymentList.push({key: item.key, name: item.name ,author: item.author,
               description:item.description, price: item.price,pubDate: item.pubDate,
               course: item.course, specialization: item.specialization, type: item.type, url: item.url,
-              employeeNumber: item.employeeNumber
+              employeeNumber: item.employeeNumber, videoUrl: item.videoUrl, fileUrl: item.fileUrl
              });
 
             } else if((item.studentNo != null) && (item.type != 'content')){
@@ -61,7 +63,7 @@ export class StudentHistoryComponent implements OnInit {
             this.paymentList.push({key: item.key, name: item.name ,author: item.author,
               description:item.description, price: item.price,pubDate: item.pubDate,
               course: item.course, specialization: item.specialization, type: item.type, url: item.url,
-              studentNo: item.studentNo
+              studentNo: item.studentNo, videoUrl: item.videoUrl, fileUrl: item.fileUrl
              });
 
 
@@ -75,6 +77,37 @@ export class StudentHistoryComponent implements OnInit {
         })
 
     })
+
+  }
+
+
+  download(payment){
+
+
+
+
+    // this.storage.ref('uploads/contentItem/'+ payment.fileUrl).getDownloadURL().subscribe(data => {
+
+    //   window.open(data);
+    // });
+
+  }
+
+
+  openVideo(payment){
+    this.storage.ref('uploads/contentItem/'+ payment.videoUrl).getDownloadURL().subscribe(data => {
+
+      window.open(data);
+    });
+
+  }
+
+  openFile(payment){
+
+    this.storage.ref('uploads/contentItem/'+ payment.fileUrl).getDownloadURL().subscribe(data => {
+
+      window.open(data);
+    });
 
   }
 

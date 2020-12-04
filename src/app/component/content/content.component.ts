@@ -39,13 +39,20 @@ export class ContentComponent implements OnInit {
 
   getContent(){
     this.contentDao.getContent().subscribe(data => {
+
+
+
       this.contentList = data.map(e => {
+
+
+        let object = e.payload.doc.data() as ContentItem
         return{
 
           key: e.payload.doc.id,
+          downloadUrl: this.getImage(object.thumbnail),
           ... e.payload.doc.data() as ContentItem
         } as ContentItem
-      })
+      });
 
     })
 
@@ -61,6 +68,13 @@ export class ContentComponent implements OnInit {
 
   }
 
+
+  getImage(imagine){
+
+
+   return this.contentDao.retreiveImage(imagine)
+
+  }
 
 
 

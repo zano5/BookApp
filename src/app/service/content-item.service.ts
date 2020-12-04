@@ -117,4 +117,12 @@ downloadFileUrl;
 
  }
 
+
+
+  retreiveImage(image) {
+  console.log(image);
+  const ref = this.storage.ref('uploads/contentItem/thumbnail/' + image);
+  return    ref.getDownloadURL();
+}
+
   }

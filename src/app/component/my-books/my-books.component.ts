@@ -156,6 +156,13 @@ export class MyBooksComponent implements OnInit {
     this.book.studentNo = this.student[0].studentNo;
     this.uploadProgress =  this.addBookService.uploadBookImage(this.event, this.book);
 
+    this.book.author = '';
+    this.book.isbn=0;
+    this.book.name='';
+    this.book.description ='';
+    this.book.price =0;
+    this.book.pubDate = '';
+
   }
 
 
@@ -207,6 +214,13 @@ export class MyBooksComponent implements OnInit {
     this.book.course = this.course;
 
     this.addBookService.updateBook(this.book);
+
+    this.book.author = '';
+    this.book.isbn=0;
+    this.book.name='';
+    this.book.description ='';
+    this.book.price =0;
+    this.book.pubDate = '';
   }
 
 

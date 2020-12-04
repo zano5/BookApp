@@ -4,6 +4,7 @@ import { UserService } from './../../service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Feature, MapboxService } from 'src/app/service/mapbox.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +12,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
+  checkAddress ="";
+  moreRequest : boolean = false;
+  moreRequestICT : boolean = false;
+  coordinates : any;
+  list : any;
+  selectedAddress : string= "";
+  lat;
+  lng;
+  addresses = [];
+
 
   profileForm: FormGroup;
   profileUser = 0;
@@ -43,7 +55,7 @@ export class ProfileComponent implements OnInit {
 
 
   // tslint:disable-next-line:max-line-length
-  constructor( private fb: FormBuilder, private userDao: UserService, private router: Router, private rBookService: RecommendedBooksService, private subjectService: AddSubjectService) {
+  constructor( private fb: FormBuilder, private userDao: UserService, private router: Router, private rBookService: RecommendedBooksService, private subjectService: AddSubjectService,  private mapboxService: MapboxService) {
 
    this.profileUser = this.userDao.getStudent();
 
@@ -122,6 +134,9 @@ export class ProfileComponent implements OnInit {
 
  updateStudent() {
 
+  this.profileUser[0].location = this.selectedAddress;
+
+
   const student =  this.profileUser[0];
 
   student.gender = this.gender;
@@ -131,6 +146,47 @@ export class ProfileComponent implements OnInit {
  }
 
 
+
+
+ onSelect(address, i) {
+  this.selectedAddress = address;
+  //  selectedcoodinates=
+
+  console.log("lng:" + JSON.stringify(this.list[i].geometry.coordinates[0]))
+  console.log("lat:" + JSON.stringify(this.list[i].geometry.coordinates[1]))
+  this.lng = JSON.stringify(this.list[i].geometry.coordinates[0])
+  this.lat = JSON.stringify(this.list[i].geometry.coordinates[1])
+  // this.user.coords = [this.lng,this.lat];
+  console.log("index =" + i)
+  console.log(this.selectedAddress)
+  // this.user.address = this.selectedAddress;
+  this.addresses = [];
+}
+
+
+addressCheck(event){
+  this.checkAddress = event.target.value;
+  console.log("info",this.checkAddress);
+
+
+}
+
+
+
+search(event: any) {
+  const searchTerm = event.target.value.toLowerCase();
+  if (searchTerm && searchTerm.length > 0) {
+    this.mapboxService.search_word(searchTerm)
+      .subscribe((features: Feature[]) => {
+        this.coordinates = features.map(feat => feat.geometry)
+        this.addresses = features.map(feat => feat.place_name)
+        this.list = features;
+        console.log(this.list)
+      });
+  } else {
+    this.addresses = [];
+  }
+}
 
 
 

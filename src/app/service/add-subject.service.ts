@@ -131,5 +131,13 @@ export class AddSubjectService {
 
 
 
+  getSubjectBySubjectID(subjectID){
+
+
+    return this.afs.collection('Subject', ref => ref.where('subjectID', '==', subjectID)).snapshotChanges();
+  }
+
+
+
 
 }

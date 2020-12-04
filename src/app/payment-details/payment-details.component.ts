@@ -1,3 +1,4 @@
+import { AddBookService } from './../service/add-book.service';
 import { TeacherBooksComponent } from './../component/teacher-books/teacher-books.component';
 import { ActivityTeacherService } from './../service/activity-teacher.service';
 import { TeacherService } from './../service/teacher.service';
@@ -23,11 +24,27 @@ export class PaymentDetailsComponent implements OnInit {
   teacherList;
   activity = {} as Activity;
   teacher = {} as Teacher;
+  profileUser;
 
 
 
 
-  constructor(private router: Router, private paymentDao: PaymentHistoryService, private userDao: UserService, private cartDao: CartService, private teacherDao: TeacherService, private activityDao: ActivityTeacherService) { }
+  constructor(private router: Router, private paymentDao: PaymentHistoryService, private userDao: UserService, private cartDao: CartService, private teacherDao: TeacherService, private activityDao: ActivityTeacherService, private bookDao: AddBookService) {
+
+
+    this.profileUser = this.userDao.getStudent();
+
+
+    if (this.userDao.getStudent()) {
+
+      console.log('user Okay');
+
+       } else {
+
+        this.router.navigateByUrl('signIn');
+
+       }
+   }
 
   ngOnInit() {
 
@@ -145,16 +162,29 @@ export class PaymentDetailsComponent implements OnInit {
 
 
 
+
+
     if(this.userDao.getStudent()[0].bookAmount >= this.totalAmount){
 
 
     for(let cartItem of this.cartList){
 
 
+
+      if(cartItem.type !='content'){
+      this.bookDao.deleteBook(cartItem);
+      }
+
+      if((cartItem.employeeNumber != null) && (cartItem.employeeNumber != "")){
+
+
+
       this.activity.amount = cartItem.price;
       this.activity.message = "funds received";
       this.activity.userNumber = cartItem.employeeNumber;
       this.activity.status ="received";
+
+
       this.activityDao.createTeacherActivity(this.activity);
 
 
@@ -193,18 +223,26 @@ export class PaymentDetailsComponent implements OnInit {
 
 
 
+
+
        )
 
 
        this.teacherDao.updateTheTeacher(this.teacher);
 
-
+      }
     }
 
 
 
 
+    if(this.newCartList.length> 0){
 
+
+    this.payment.address = this.cartDao.getAddress();
+    this.payment.studentNo = this.profileUser[0].studentNo;
+    this.payment.itemsList = this.newCartList;
+    this.payment.totalAmount = this.totalAmount;
 
 
 
@@ -212,7 +250,7 @@ export class PaymentDetailsComponent implements OnInit {
 
 
       this.userDao.getStudent()[0].bookAmount = this.userDao.getStudent()[0].bookAmount - this.totalAmount;
-      alert('Successfullly Made Payment');
+      alert('Successfully Made Payment');
 
 
 
@@ -224,11 +262,13 @@ export class PaymentDetailsComponent implements OnInit {
       this.cartDao.cartList = [];
 
 
-     // this.router.navigateByUrl('detail-menu/books');
+     this.router.navigateByUrl('detail-menu/books');
     }).catch(err => {
 
       alert(err.message+ 'Unable To Make Payment');
     })
+
+  }
 
   }else{
 

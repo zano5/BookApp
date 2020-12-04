@@ -19,6 +19,8 @@ export class TeacherWalletComponent implements OnInit {
   teacher;
   activityList = [];
 
+  activity = {} as Activity;
+
 
 
   constructor(private router: Router, private paymentDao: PaymentHistoryService, private teacherDao: TeacherService, private activityDao: ActivityTeacherService) {
@@ -42,9 +44,28 @@ export class TeacherWalletComponent implements OnInit {
 
   goWithdraw() {
 
-    this.amount = this.amount - this.withdraw;
 
-    this.historyList.push(this.withdraw);
+    this.activity.amount = this.withdraw;
+    this.activity.message = "funds withdrawn";
+    this.activity.userNumber = this.teacher.employeeNumber;
+    this.activity.status ="withdrawal";
+
+    if(this.withdraw <= this.teacher.amount){
+
+
+
+    this.teacher.amount =   this.teacher.amount  - this.withdraw;
+
+    this.activityDao.createTeacherActivity(this.activity);
+
+   this.teacherDao.updateTheTeacher(this.teacher);
+
+   alert("withdrawal Made");
+  }else{
+
+    alert("Withdrawal Amount More Than Wallet Amount");
+
+  }
   }
 
 

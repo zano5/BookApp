@@ -17,12 +17,15 @@ export class TeacherContentComponent implements OnInit {
   contentList = [];
   eventFile;
   eventVideo;
+  eventThumbNail;
   ref;
   task;
   uploadProgressFile;
   uploadProgressVideo;
+  uploadProgressthumbNail;
   downloadURL;
   downloadVideoUrl;
+  downloadThumbnailUrl
   downloadFileUrl;
   content = {} as ContentItem;
 
@@ -30,6 +33,7 @@ export class TeacherContentComponent implements OnInit {
   videoName;
 
   teacher;
+  thumbnailName;
 
 
   constructor(private router: Router, private contentDao: ContentItemService, private storage: AngularFireStorage, private teacherDao: TeacherService) {
@@ -58,11 +62,13 @@ export class TeacherContentComponent implements OnInit {
 
     this.contentDao.addContent(this.contentItem).then(data => {
 
-      this.uploadContentVideo = this.uploadContentVideo(this.eventVideo);
-      this.uploadContentFile = this.uploadContentFile(this.eventFile);
+       this.uploadContentVideo(this.eventVideo);
+       this.uploadContentFile(this.eventFile);
+      this.uploadContentThumbnail(this.eventThumbNail);
       this.contentItem.key = data.id;
       this.contentItem.fileUrl = this.downloadFileUrl;
       this.contentItem.videoUrl = this.downloadVideoUrl;
+     this.contentItem.thumbnail = this.downloadThumbnailUrl;
       this.contentItem.employeeNumber = this.teacher.employeeNumber;
       this.contentDao.updateContent(this.contentItem);
 
@@ -86,6 +92,32 @@ export class TeacherContentComponent implements OnInit {
     this.eventVideo = event;
 
   }
+
+
+  uploadThumbnail(event){
+
+    this.eventThumbNail =event;
+
+
+  }
+
+
+
+  uploadContentThumbnail(event){
+
+    this.thumbnailName = this.makeid(10) + '.jpg';
+
+     const file = event.target.files[0];
+     const filePath = 'uploads/contentItem/thumbnail/' + this.thumbnailName;
+     this.ref = this.storage.ref(filePath);
+
+     this.task = this.storage.upload(filePath, file);
+
+     this.downloadThumbnailUrl= this.thumbnailName;
+
+     return this.uploadProgressthumbNail = this.task.percentageChanges();
+
+ }
 
 
 

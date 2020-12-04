@@ -23,6 +23,9 @@ export interface Geometry {
 })
 export class MapboxService {
 
+
+  key = 'pk.eyJ1IjoiemFub3hvbG8iLCJhIjoiY2pqeWFzNGQ1MGt2MTNwbW1teDc2cHdsNCJ9.aiBqeGsFLobTfkMSdTx2mQ';
+
   constructor(private http: HttpClient) { }
 
 
@@ -30,7 +33,7 @@ export class MapboxService {
 
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
     // tslint:disable-next-line:max-line-length
-    return this.http.get(url + query + '.json?types=address&access_token=pk.eyJ1IjoibmVvLXB1bGUiLCJhIjoiY2p4cTI0MGF0MGlnajNjbDMzMW9nMzJ6OSJ9.QgND5rJKyVYEmTjBJIrq3g')
+    return this.http.get(url + query + '.json?types=address&country=ZA&access_token='  + this.key )
       .pipe(map((res: MapboxOutput) => {
         return res.features;
       }));

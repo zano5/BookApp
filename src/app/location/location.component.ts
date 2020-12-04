@@ -1,3 +1,4 @@
+import { UserService } from './../service/user.service';
 import { CartService } from './../service/cart.service';
 import { Feature, MapboxService } from './../service/mapbox.service';
 import { Component, OnInit } from '@angular/core';
@@ -13,10 +14,8 @@ export class LocationComponent implements OnInit {
 
   checkAddress ="";
 
-
-
-
-
+  delivery = false;
+  collect = true;
 
   moreRequest : boolean = false;
   moreRequestICT : boolean = false;
@@ -28,11 +27,30 @@ export class LocationComponent implements OnInit {
 
 
   addresses = [];
+  profileUser
 
 
   address = {} as Address;
 
-  constructor(private router: Router, private mapboxService: MapboxService, private cartDao: CartService) { }
+  constructor(private router: Router, private mapboxService: MapboxService, private cartDao: CartService, private userDao: UserService ) {
+
+
+    this.profileUser = this.userDao.getStudent();
+
+
+    if (this.userDao.getStudent()) {
+
+      console.log('user Okay');
+
+       } else {
+
+        this.router.navigateByUrl('signIn');
+
+       }
+
+
+
+  }
 
   ngOnInit() {
   }
@@ -112,4 +130,45 @@ onSelect(address, i) {
   // this.user.address = this.selectedAddress;
   this.addresses = [];
 }
+
+
+onDelivery(){
+
+  this.collect = false;
+  this.delivery = true;
+
+
+
+}
+
+
+onCollect(){
+
+
+  this.delivery = false;
+  this.collect = true;
+
+
+}
+
+
+submitCollect(){
+
+  if(this.address.location == null ){
+
+    alert('Enter Location');
+  }else{
+
+
+    this.address.location = this.selectedAddress;
+
+
+    this.cartDao.addAddress(this.address);
+    this.router.navigateByUrl('payment-detail');
+  }
+
+}
+
+
+
 }

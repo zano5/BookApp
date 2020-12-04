@@ -21,13 +21,17 @@ export class AdminDashboardComponent implements OnInit {
     studentNo: '',
     password: '',
     course: '',
-    specialization: ''
+    specialization: '',
+    subjects: []
 
   };
 
   subjectList;
 
   totSubject;
+
+
+  subjectID;
 
 
 totTeachers;
@@ -45,6 +49,9 @@ totTeachers;
     pubDate: ''
 
   };
+
+
+  subject = {} as SubjectBook;
 
 
 
@@ -72,6 +79,8 @@ specializationList = [];
   specialObjectList = [];
 
   studentList = [];
+
+  studentSubjectList = [];
 
   // tslint:disable-next-line:max-line-length
   constructor(private router: Router, private studentService: AdminStudentService, private  specializationSevice: AdminSpecializationService, private courseService: AdminCourseService, private recommendBookService: RecommendedBooksService, private subjectService: AddSubjectService, private teacherDao: TeacherService ) { }
@@ -201,14 +210,21 @@ addStudent() {
 
 
 update(student) {
+
+
    this.student = student;
 }
 
 updateStudent() {
 
-
+  if(this.studentSubjectList.length > 0){
+    this.student.subjects = this.studentSubjectList;
+    }
 
   this.studentService.updateStudent(this.student);
+
+
+  this.studentSubjectList = [];
 
 }
 
@@ -347,11 +363,45 @@ addSBook(){
 }
 
 
+addStudentSubject(){
+
+
+
+
+  this.subjectService.getSubjectBySubjectID(this.subjectID).subscribe(data => {
+
+
+        data.map(e => {
+
+
+        this.subject = e.payload.doc.data() as SubjectBook;
+        this.subject.key = e.payload.doc.id;
+
+
+
+
+        })
+
+
+        this.studentSubjectList.push(this.subject);
+
+        console.log("subject Info", this.studentSubjectList);
+
+  })
+}
 
 
 
 
 
+
+
+removeFromStudjectList(value) {
+  var idx = this.studentSubjectList.indexOf(value);
+  if (idx !== -1) {
+    this.studentSubjectList.splice(idx, 1);
+  }
+}
 
 
 

@@ -4,7 +4,9 @@
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Price</th>
-      <th scope="col"></th>
+      <th scope="col">file</th>
+      <th scope="col">Video</th>
+
 
 
     </tr>
@@ -14,8 +16,8 @@
 
       <td>{{payment.name}}</td>
       <td>{{payment.price}}</td>
-      <td *ngIf="payment.type=='content'"><button>Download Content</button></td>
-
+      <td (click)= "openFile(payment)" ><a style="color: blue;">{{payment.fileUrl}}</a></td>
+      <td (click)= "openVideo(payment)"><a style="color: blue;">{{payment.videoUrl}}</a></td>
 
 
 

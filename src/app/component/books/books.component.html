@@ -100,14 +100,17 @@
         </button>
       </div>
 
-      <p id="text_modal"> Name: {{bookItem?.name}}</p>
-      <p id="text_modal"> Description: {{bookItem?.description}}</p>
-      <p id="text_modal"> ISBN: {{bookItem?.isbn}}</p>
-      <p id="text_modal"> Author: {{bookItem?.author}}</p>
-      <p id="text_modal"> Publish Date: {{bookItem?.pubDate}}</p>
-      <p id="text_modal"> Price: R {{bookItem?.price}}</p>
-      <p id="text_modal"  *ngIf="bookItem?.studentNo"> Student Number: {{bookItem?.studentNo}}</p>
-      <p id="text_modal" *ngIf="bookItem?.employeeNumber"> Employee Number: {{bookItem?.employeeNumber}}</p>
+      <p id="text_modal"> <b>Name:</b> {{bookItem?.name}}</p>
+      <p id="text_modal"><b>Description:</b>  {{bookItem?.description}}</p>
+      <p id="text_modal"> <b>ISBN:</b> {{bookItem?.isbn}}</p>
+      <p id="text_modal"> <b>Author:</b> {{bookItem?.author}}</p>
+      <p id="text_modal"> <b>Publish Date:</b> {{bookItem?.pubDate}}</p>
+      <p id="text_modal"> <b>Price:</b> R {{bookItem?.price}}</p>
+      <p id="text_modal" *ngIf="bookItem?.studentNo"><b> Student name:</b> {{student?.name}}</p>
+      <p id="text_modal" *ngIf="bookItem?.studentNo"> <b>Student Contact:</b> {{student?.contact}}</p>
+      <p id="text_modal" *ngIf="bookItem?.studentNo"><b> Student Location:</b> {{student?.location}}</p>
+      <p id="text_modal" *ngIf="bookItem?.employeeNumber"><b> Teacher Name:</b> {{teacher?.name}}</p>
+      <p id="text_modal" *ngIf="bookItem?.employeeNumber"> <b>Teacher Contact: </b>{{teacher?.contact}}</p>
 
 
 

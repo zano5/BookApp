@@ -15,6 +15,8 @@ class Book {
   type: string;
   specialization?: string;
   course?: string;
+  paymentStatus: string;
+
 
 
 

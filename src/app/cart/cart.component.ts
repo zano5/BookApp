@@ -1,3 +1,4 @@
+import { UserService } from './../service/user.service';
 import { CartService } from './../service/cart.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,11 +13,23 @@ export class CartComponent implements OnInit {
 
   carList = [];
   totAmount = 0;
+  profileUser;
 
-  constructor(private cartDao: CartService, private router: Router) {
+  constructor(private cartDao: CartService, private router: Router, private userDao: UserService) {
+
+    this.profileUser = this.userDao.getStudent();
+
+    if (this.userDao.getStudent()) {
+
+      console.log('user Okay');
 
 
+       } else {
 
+
+        this.router.navigateByUrl('signIn');
+
+       }
 
 
   }
@@ -25,6 +38,8 @@ export class CartComponent implements OnInit {
 
 
     this.carList = this.cartDao.getCart();
+
+    console.log('cart', this.carList);
 
 
     for(let cart of this.carList){
@@ -40,14 +55,7 @@ export class CartComponent implements OnInit {
   }
 
 
-
-
-
-
-
-
   back() {
-
 
     this.router.navigateByUrl('detail-menu/books')
 
@@ -57,11 +65,9 @@ export class CartComponent implements OnInit {
 
   goLocation() {
 
-
       if(this.totAmount > 0){
     this.router.navigateByUrl("location");
       }else{
-
 
         alert("You Do Not Have Any Items In The Cart");
       }
@@ -72,15 +78,12 @@ export class CartComponent implements OnInit {
 
 remove(value){
 
-
-
   this.cartDao.removeFromCart(value);
 
   this.carList = [];
   this.totAmount = 0;0
 
   this.carList = this.cartDao.getCart();
-
 
   console.log(this.carList);
 

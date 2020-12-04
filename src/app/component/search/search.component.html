@@ -1,13 +1,13 @@
 
 
 <nav class="navbar navbar-light bg-light">
-   
-   
-    
 
 
-        <h4>Results Found</h4> 
- 
+
+
+
+        <h4>Results Found</h4>
+
     <form class="form-inline">
 
         <button type="button"  data-toggle="modal" data-target="#addSpecializationModal" style=" background-color: Transparent;
@@ -30,7 +30,7 @@
 
 
 
-    <div *ngFor="let book of bookArryList">
+    <div *ngFor="let book of bookList">
         <div class="form-group col-md-4" >
 
 
@@ -71,25 +71,23 @@
           <p id="text_modal"> Name: {{bookItem?.name}}</p>
           <p id="text_modal"> Description: {{bookItem?.description}}</p>
           <p id="text_modal"> ISBN: {{bookItem?.isbn}}</p>
-          <p id="text_modal"> Author: {{bookItem?.Author}}</p>
-          <p id="text_modal"> Publish Date: {{bookItem?.pubdate}}</p>
+          <p id="text_modal"> Author: {{bookItem?.author}}</p>
+          <p id="text_modal"> Publish Date: {{bookItem?.pubDate}}</p>
           <p id="text_modal"> Price: R {{bookItem?.price}}</p>
+          <p id="text_modal"  *ngIf="bookItem?.studentNo"> Student Number: {{bookItem?.studentNo}}</p>
+          <p id="text_modal" *ngIf="bookItem?.employeeNumber"> Employee Number: {{bookItem?.employeeNumber}}</p>
 
-          <p id="text_modal"> Student Number{{profile.studentNo}}</p>
-          <p id="text_modal"> Contact Number {{profile.contact}}</p>
-    
-    
-    
-          <div class="modal-footer">
-              <div *ngIf="bookItem?.reserved =='no'">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="reserve(bookItem)">Reserve</button>
-           </div>
-           <div *ngIf="bookItem?.reserved =='yes'">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelReserve(bookItem)">Cancel Reserve</button>
-           </div>
+
+
+
+
+
 
 
           <div class="modal-footer">
+            <div >
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="addToCart(bookItem)">Add To Cart</button>
+           </div>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
           </div>

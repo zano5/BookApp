@@ -1,3 +1,5 @@
+import { LoginDAOService } from './../../service/login-dao.service';
+import { TeacherService } from './../../service/teacher.service';
 import { CartService } from './../../service/cart.service';
 import { AdminStudentService } from 'src/app/service/admin-student.service';
 import { AddBookService } from './../../service/add-book.service';
@@ -19,6 +21,7 @@ export class BooksComponent implements OnInit {
   bookArryList = [];
 
 
+  student;
 
   image;
 
@@ -38,10 +41,13 @@ export class BooksComponent implements OnInit {
     studentNo: ''
   };
 
+
+  teacher = {} as Teacher;
+
   profileUser = [];
 
   // tslint:disable-next-line:max-line-length
-  constructor(private bookDao: AddBookService, private router: Router, private  studentService: AdminStudentService, private userDao: UserService, private cartDao: CartService) {
+  constructor(private bookDao: AddBookService, private router: Router, private  studentService: AdminStudentService, private userDao: UserService, private cartDao: CartService, private teacherDao: TeacherService, private loginDao: LoginDAOService) {
 
     this.profileUser = this.userDao.getStudent();
     this.bookArryList = [];
@@ -49,6 +55,17 @@ export class BooksComponent implements OnInit {
 
 
 
+    if (this.userDao.getStudent()) {
+
+    console.log('user Okay');
+
+
+     } else {
+
+
+      this.router.navigateByUrl('signIn');
+
+     }
 
 
 
@@ -79,44 +96,62 @@ export class BooksComponent implements OnInit {
 
     this.bookItem = book;
 
-    this.studentService.getStudent().subscribe( data => {
-
-      this.studentList = data.map(e => {
+    if((this.bookItem.employeeNumber != null) ){
 
 
-        return{
-
-          key: e.payload.doc.id,
-          ... e.payload.doc.data() as Student
-
-        } as Student;
-
-      });
+      this.teacherDao.getTeacherByEmployeeNumber(book.employeeNumber).subscribe(data => {
 
 
-      for (const stud of this.studentList) {
-
-      if ( stud.studentNo === book.studentNo) {
-
-        this.profile.contact = stud.contact;
-        this.profile.studentNo = stud.studentNo;
+        data.map(e => {
 
 
 
+          this.teacher = e.payload.doc.data() as Teacher;
+          this.teacher.key =e.payload.doc.id;
+
+          return this.teacher;
 
 
-      } else {
 
-        this.profile.contact = '';
-        this.profile.studentNo = '';
+        })
 
 
-      }
+      })
+
+
+
+
 
     }
 
 
-    });
+    if((this.bookItem.studentNo != null)){
+
+      console.log('student book', this.bookItem.studentNo);
+
+      this.loginDao.userLogin(this.bookItem).subscribe(data => {
+
+
+        console.log(data);
+        data.map(e=> {
+
+
+
+          this.student = e.payload.doc.data()
+         return  this.student.key = e.payload.doc.id;
+        })
+
+
+      })
+
+
+
+
+    }
+
+
+
+
 
   }
 

@@ -28,10 +28,13 @@ border-radius: 5px;">
 
 
           <div class="card" style="width: 18rem;">
+            <img *ngIf="content.thumbnail" [attr.src]="content.downloadUrl | async" class="card-img-top" alt="..." style="height:300px ">
               <div class="card-body">
                 <h5 class="card-title">{{content.name}}</h5>
                 <p class="card-text">Price:R {{content.price}}</p>
-                <p *ngIf=""></p>
+                <p class="card-text" *ngIf="content?.videoUrl">Video File Available</p>
+                <p  class="card-text" *ngIf="content?.fileUrl">PDF File Available</p>
+
 
 
                 <div class="modal-footer">

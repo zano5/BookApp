@@ -14,9 +14,82 @@
 
 
 <div class="content">
+
+  <div class="row" style="margin-left: 10px;">
+    <div class="col-sm">
+
+
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="delivery"  [checked]="delivery" (change)="onDelivery()">
+        <label class="form-check-label" > <i>Delivery</i></label>
+      </div>
+
+    </div>
+    <div class="col-sm">
+
+
+
+      <div class="form-check" >
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" [(ngModel)]="collect" [checked]="collect"  (change)="onCollect()"  >
+        <label class="form-check-label" ><i>Collect</i></label>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div *ngIf="collect==true">
+
+
+
+
+
+
+      <h3 style="margin-left:20px; margin-top:50px;">Collection Location</h3>
+
+      <div *ngFor="let address of addresses ; let i=index" (click)="onSelect(address, i)" >
+
+        <ul class="list-group">
+          <li class="list-group-item">{{ address}}</li>
+          <br>
+        </ul>
+    </div>
+
+
+
+      <div class="col-md-4" >
+        <label for="inputAddress">Search</label>
+        <input type="text" class="form-control"  (input)="search($event)" (change)="addressCheck($event)"   [(ngModel)]="address.location"  [value]="selectedAddress">
+      </div>
+
+
+      <div class="row" style="margin-left:20px;">
+        <div class="col-md-4" style="margin-top: 10px; ">
+        <button class="btn  btn-primary  btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" (click)="submitCollect()">Submit</button>
+      </div>
+      </div>
+
+
+
+
+    </div>
+
+
+  <div *ngIf="delivery==true">
+
   <span id="clickable">
 
     <h3 style="margin-left:20px; margin-top:50px;">Delivery Location</h3>
+
+    <div *ngFor="let address of addresses ; let i=index" (click)="onSelect(address, i)" >
+
+      <ul class="list-group">
+        <li class="list-group-item">{{ address}}</li>
+        <br>
+      </ul>
+  </div>
 
     <div class="row"  style="margin-left:20px;">
 
@@ -26,13 +99,7 @@
       <label for="inputAddress">Search</label>
       <input type="text" class="form-control"  (input)="search($event)" (change)="addressCheck($event)"   [(ngModel)]="address.location"  [value]="selectedAddress">
     </div>
-    <div *ngFor="let address of addresses ; let i=index" (click)="onSelect(address, i)" >
 
-      <ul class="list-group">
-        <li class="list-group-item">{{ address}}</li>
-        <br>
-      </ul>
-  </div>
 
 
 
@@ -70,3 +137,15 @@
   <div class="col-md-4" style="margin-top: 10px; ">
   <button class="btn  btn-primary  btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit" (click)="submit()">Submit</button>
 </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+

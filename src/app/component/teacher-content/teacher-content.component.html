@@ -64,6 +64,15 @@ border-radius: 5px;">
 
 </label>
 
+<label class="image-upload-container btn btn-bwm" for="file">
+  <span>Select Thumbnail</span>
+<input type="file" (change)="uploadThumbnail($event)" accept=".jpeg,.png,jpg" />
+
+</label>
+
+<label>Upload Thumbnail</label>
+<progress max="100" [value]="(uploadProgressthumbNail | async)" style="width:100%"></progress>
+
           <label>Upload Progress Video</label>
             <progress max="100" [value]="(uploadProgressVideo | async)" style="width:100%"></progress>
 

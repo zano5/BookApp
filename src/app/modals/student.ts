@@ -12,6 +12,7 @@ class Student {
   course: string;
   gender: string;
   bookAmount: number;
+  location: string;
 
 
 }
