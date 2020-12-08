@@ -44,81 +44,89 @@
 </header>
 
 
-<div class="card">
-
-    <div class="containerCard">
-
-<!--Carousel Wrapper-->
-<div id="carousel-with-lb" class="carousel slide carousel-multi-item" data-ride="carousel" style="margin-top:20px;">
 
 
 
-    <div class="carousel-inner mdb-lightbox" role="listbox">
-      <div id="mdb-lightbox-ui"></div>
-      <!--First slide-->
-      <div class=" carousel-item active text-center">
-
-        <figure class="col-md-4 d-md-inline-block">
 
 
-            <img src="assets/student1.jpg" style="height:250px;"
-              class="img-fluid">
-
-        </figure>
-        <figure class="col-md-4 d-md-inline-block">
 
 
-            <img src="assets/student2.jpg" style="height:250px; width:330px"
-              class="img-fluid">
-
-        </figure>
-
-        <figure class="col-md-4 d-md-inline-block">
 
 
-            <img src="assets/student3.jpg" style="height:250px; width:330px"
-              class="img-fluid">
-
-        </figure>
-        <figure class="col-md-4 d-md-inline-block">
 
 
-            <img src="assets/student4.jpg" style="height:250px; width:330px"
-              class="img-fluid">
+<div class="card_content">
 
-        </figure>
-        <figure class="col-md-4 d-md-inline-block">
+  <h2 style='text-align:center; margin-top: 10px;text-decoration: overline; text-decoration-thickness: inherit;'>Books</h2>
 
-
-            <img src="assets/student5.jpg" style="height:250px; width:330px"
-              class="img-fluid">
-
-        </figure>
-        <figure class="col-md-4 d-md-inline-block">
+  <div class="form-row">
 
 
-            <img src="assets/student6.png" style="height:250px; width:330px"
-              class="img-fluid">
 
-        </figure>
 
-      </div>
-      <!--/.First slide-->
+
+
+  <div *ngFor="let book of bookArryList">
+      <div class="form-group col-md-4" >
+
+
+
+
+
+
+
+
+
+
+
+              <div class="card" style="width: 18rem;">
+                  <img [attr.src]="book.downloadUrl | async" class="card-img-top" alt="..." style="height:300px ">
+                  <div class="card-body">
+                    <h5 class="card-title">{{book.name}}</h5>
+                    <p class="card-text">Price:R {{book.price}}</p>
+                    <p *ngIf=""></p>
+                    <a class="btn btn-primary" style="width:100%" data-toggle="modal" data-target="#addModal" (click)="collectBook(book)">View Details</a>
+                  </div>
+                </div>
+
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+
+
 
 
 
 
     </div>
-    <!--/.Slides-->
-
-  </div>
-  <!--/.Carousel Wrapper-->
 
   </div>
 
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <div class="card">
+
 
 
 

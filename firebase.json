@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/MicampusExchange",
+    "public": "dist/MiCampusExchange",
     "ignore": [
       "firebase.json",
       "**/.*",

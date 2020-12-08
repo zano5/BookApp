@@ -26,6 +26,8 @@ export class PaymentDetailsComponent implements OnInit {
   teacher = {} as Teacher;
   profileUser;
 
+  paymentCard = {} as Card;
+
 
 
 
@@ -283,6 +285,35 @@ export class PaymentDetailsComponent implements OnInit {
 
 
 
+
+
+  }
+
+
+  payCard(){
+
+
+    if(this.paymentCard.cardNumber.toString().length < 16){
+
+      alert("Length of card number can not be less than 16");
+
+    }else if(this.paymentCard.cardMonth == null){
+
+      alert("Card month can not be an empty string");
+
+    }else if(this.paymentCard.cardYear == null){
+
+      alert("Card Year can not be an empty string");
+
+    }else{
+
+
+      alert("Payment Made Successfully");
+
+      this.router.navigateByUrl('detail-menu/books');
+
+
+    }
 
 
   }

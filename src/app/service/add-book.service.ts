@@ -283,5 +283,13 @@ getTeacherBooksByEM(employeeNumber){
 }
 
 
+getBooksForHome(){
+
+
+  return this.afd.collection("books", ref => ref.limit(8)).snapshotChanges();
+
+}
+
+
 }
 

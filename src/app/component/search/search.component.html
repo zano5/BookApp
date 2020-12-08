@@ -74,8 +74,11 @@
           <p id="text_modal"> Author: {{bookItem?.author}}</p>
           <p id="text_modal"> Publish Date: {{bookItem?.pubDate}}</p>
           <p id="text_modal"> Price: R {{bookItem?.price}}</p>
-          <p id="text_modal"  *ngIf="bookItem?.studentNo"> Student Number: {{bookItem?.studentNo}}</p>
-          <p id="text_modal" *ngIf="bookItem?.employeeNumber"> Employee Number: {{bookItem?.employeeNumber}}</p>
+          <p id="text_modal" *ngIf="bookItem?.studentNo"><b> Student name:</b> {{student?.name}}</p>
+          <p id="text_modal" *ngIf="bookItem?.studentNo"> <b>Student Contact:</b> {{student?.contact}}</p>
+          <p id="text_modal" *ngIf="bookItem?.studentNo"><b> Student Location:</b> {{student?.location}}</p>
+          <!-- <p id="text_modal" *ngIf="bookItem?.employeeNumber"><b> Teacher Name:</b> {{teacher?.name}}</p>
+          <p id="text_modal" *ngIf="bookItem?.employeeNumber"> <b>Teacher Contact: </b>{{teacher?.contact}}</p> -->
 
 
 
